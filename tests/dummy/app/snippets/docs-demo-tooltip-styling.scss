@@ -1,0 +1,12 @@
+// BEGIN-SNIPPET docs-demo-tooltip-styling.scss
+app-tooltip {
+	opacity:0;
+	@include box-shadow(0 0 15px rgba(0,0,0,0.6));
+}
+
+app-tooltip[visible] {
+	opacity:1;
+	@include box-shadow(0 0 15px rgba(0,0,0,0.6));
+	@include animation(ghost 0.3s ease-in-out 0.2s normal both);
+}
+// END-SNIPPET

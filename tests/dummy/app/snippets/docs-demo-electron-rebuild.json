@@ -1,0 +1,7 @@
+// BEGIN-SNIPPET docs-demo-electron-rebuild.json
+{
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps"
+  }
+}
+// END-SNIPPET

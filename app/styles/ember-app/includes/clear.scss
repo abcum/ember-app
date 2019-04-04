@@ -1,0 +1,15 @@
+clear {
+	border:0;
+	margin:0;
+	padding:0;
+	clear:both;
+	display:block;
+	&:after {
+		content: ".";
+		display: block;
+		clear: both;
+		visibility: hidden;
+		line-height: 0;
+		height: 0;
+	}
+}

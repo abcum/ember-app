@@ -1,51 +1,68 @@
 'use strict';
 
 module.exports = function(environment) {
-  let ENV = {
-    modulePrefix: 'dummy',
-    environment,
-    rootURL: '/',
-    locationType: 'auto',
-    EmberENV: {
-      FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
-      },
-      EXTEND_PROTOTYPES: {
-        // Prevent Ember Data from overriding Date.parse.
-        Date: false
-      }
-    },
 
-    APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
-    }
-  };
+	let ENV = {
 
-  if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-  }
+		environment,
+		rootURL: '/',
+		locationType: 'auto',
+		modulePrefix: 'dummy',
 
-  if (environment === 'test') {
-    // Testem prefers this...
-    ENV.locationType = 'none';
+		'ember-app': {
+			worker: {
+				enabled: false,
+			},
+			version: {
+				enabled: false,
+			},
+			plugins: {
+				chart: true,
+				marked: true,
+				vis: true,
+				moment: {
+					locales: ['en-gb'],
+				},
+				codemirror: {
+					includeTags: true,
+					includeComments: true,
+					includeBrackets: true,
+					includeWhitespace: true,
+					modes: ["htmlmixed", "css",  "sass",  "javascript",  "markdown",  "handlebars"],
+					themes: ["base16-dark", "base16-light", "bespin", "dracula", "eclipse"],
+				},
+			},
+		},
 
-    // keep test console output quieter
-    ENV.APP.LOG_ACTIVE_GENERATION = false;
-    ENV.APP.LOG_VIEW_LOOKUPS = false;
+		APP: {
+			BINDINGS: false,
+			LOG_RESOLVER: false,
+			LOG_TRANSITIONS: false,
+			LOG_VIEW_LOOKUPS: false,
+			LOG_ACTIVE_GENERATION: false,
+			LOG_TRANSITIONS_INTERNAL: false,
+			RAISE_ON_DEPRECATION: false,
+			LOG_STACKTRACE_ON_DEPRECATION: false,
+		},
 
-    ENV.APP.rootElement = '#ember-testing';
-    ENV.APP.autoboot = false;
-  }
+		EmberENV: { FEATURES: { }, EXTEND_PROTOTYPES: { Date: false } },
 
-  if (environment === 'production') {
-    // here you can enable a production-specific feature
-  }
+	};
 
-  return ENV;
+	if (environment === 'test') {
+		ENV.APP.autoboot = false;
+		ENV.locationType = 'none';
+		ENV.APP.rootElement = '#ember-testing';
+	}
+
+	if (environment === 'development') {
+		ENV.rootURL = '/';
+	}
+
+	if (environment === 'production') {
+		ENV.rootURL = 'ADDON_DOCS_ROOT_URL';
+	}
+
+	return ENV;
+
 };

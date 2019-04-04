@@ -1,0 +1,134 @@
+app-dropdown {
+	position:relative;
+	display:inline-block;
+}
+
+app-dropdown > label {
+	overflow:hidden;
+	max-width:inherit;
+	padding:0 16px 0 0;
+	white-space:nowrap;
+	display:inline-block;
+	vertical-align:bottom;
+	text-overflow:ellipsis;
+	background-repeat:no-repeat;
+	background-position:right 4px center;
+	background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAECAYAAABCxiV9AAAAJUlEQVQIW2OIjIz8jwszAAkGbBJAwACTZECXAEuCCGQFMAkQBgCrMjrDUR6EaAAAAABJRU5ErkJggg==');
+}
+
+app-dropdown > label:hover {
+	color:#00BFFF;
+	cursor:pointer;
+}
+
+app-dropdown[disabled] > label {
+	color:inherit;
+	cursor:default;
+	background:none;
+}
+
+app-dropdown > app-dropdown-cover {
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:11110;
+	position:fixed;
+	overflow:visible;
+}
+
+app-dropdown > app-dropdown-cover[hidden] {
+	display:none;
+}
+
+app-dropdown > app-dropdown-front {
+	margin:0;
+	overflow:auto;
+	position:absolute;
+	overflow-x:hidden;
+	overflow-y:auto;
+	cursor:pointer;
+	z-index:11111;
+	min-width:100px;
+	max-width:560px;
+	max-height:500px;
+	background:#ffffff;
+	padding:4px 0 4px 0;
+	border:1px solid #cccccc;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+app-dropdown > app-dropdown-front[hidden] {
+	display:none;
+}
+
+app-dropdown > app-dropdown-front app-dropdown-option {
+	margin:0;
+	padding:0;
+	color:#333333;
+	display:block;
+	font-size:10pt;
+	line-height:1.5;
+	overflow:hidden;
+	white-space: nowrap;
+	text-decoration:none;
+	padding:2px 30px 2px 15px;
+}
+
+app-dropdown > app-dropdown-front app-dropdown-option:hover {
+	color:#ffffff;
+	cursor:pointer;
+	background-color:#00bfff;
+}
+
+app-dropdown > app-dropdown-front app-dropdown-option[selected] {
+	font-weight:bold;
+	background-color:#f5f5f5;
+}
+
+app-dropdown > app-dropdown-front app-dropdown-option[selected]:hover {
+	color:#ffffff;
+	background-color:#00bfff;
+}
+
+app-dropdown > app-dropdown-front app-dropdown-group {
+	margin:0;
+	padding:0;
+	display:block;
+}
+
+app-dropdown > app-dropdown-front app-dropdown-group:not(:first-child) {
+	margin-top:4px;
+	border-top:1px solid #EBEBEB;
+}
+
+app-dropdown > app-dropdown-front app-dropdown-group > label {
+	margin:0;
+	padding:0;
+	color:#888888;
+	display:block;
+	font-size:10pt;
+	line-height:1.5;
+	overflow:hidden;
+	white-space:nowrap;
+	text-decoration:none;
+	padding:4px 30px 4px 15px;
+}
+
+app-dropdown > app-dropdown-front app-dropdown-group app-dropdown-option {
+	padding:2px 45px 2px 30px;
+}
+
+app-dropdown[multiple] > app-dropdown-front app-dropdown-option {
+	padding:2px 30px 2px 25px;
+}
+
+app-dropdown[multiple] > app-dropdown-front app-dropdown-option[selected] {
+	background-repeat:no-repeat;
+	background-position:5px 2px;
+	background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAMAAABhEH5lAAAANlBMVEVHcEwzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMPiRcpAAAAEnRSTlMAqlDkslhJ5hhpfCBiYTukKcpS3ekcAAAAUklEQVQYGa3AWw6DIBQA0UGBuWif+99s00QN+Gfi4RaRP5wkXRgU/VZ6oa4MsjZ2AdA0sys2WNVg85j1SdbGYdI5aaIz+Rf0qloYVd+cLS+u+QE0xQHsDkHdOQAAAABJRU5ErkJggg==');
+}

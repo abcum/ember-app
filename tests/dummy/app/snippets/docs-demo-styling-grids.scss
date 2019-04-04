@@ -1,0 +1,14 @@
+// BEGIN-SNIPPET docs-demo-styling-grids.scss
+grid-line {
+	padding:30px;
+	@include grid-line;
+}
+
+grid-item {
+	height:100px;
+	padding:30px;
+	border:1px solid #00bfff;
+	background-color:#ff0000;
+	@include grid-item(1 of 4 break every 4);
+}
+// END-SNIPPET

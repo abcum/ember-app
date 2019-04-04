@@ -1,0 +1,56 @@
+app-image {
+	display:block;
+	overflow:hidden;
+	position:relative;
+}
+
+app-image img {
+	width:100%;
+	height:100%;
+	display:block;
+	transform:scale(1);
+}
+
+app-image img:nth-of-type(1) {
+	z-index:1;
+	filter:blur(50px);
+}
+
+app-image img:nth-of-type(2) {
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:2;
+	position:absolute;
+	-webkit-animation:imageLoaded 0.5s;
+	-moz-animation:imageLoaded 0.5s;
+	-ms-animation:imageLoaded 0.5s;
+	-o-animation:imageLoaded 0.5s;
+	animation:imageLoaded 0.5s;
+}
+
+@keyframes imageLoaded {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-o-keyframes imageLoaded {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-ms-keyframes imageLoaded {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-moz-keyframes imageLoaded {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-webkit-keyframes imageLoaded {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

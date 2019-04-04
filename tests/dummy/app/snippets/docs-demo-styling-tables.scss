@@ -1,0 +1,18 @@
+// BEGIN-SNIPPET docs-demo-styling-tables.scss
+sheet {
+	background-color:#000000;
+	@include table(100%, 1px); /* Table is 100% wide with 1px borders */
+}
+
+sheet-row {
+	@include table-row;
+	background-color:#ffffff;
+}
+
+sheet-col {
+	padding:10px;
+	@include table-col(6 of 12 for 1st); // The 1st column is 50% wide
+	@include table-col(3 of 12 for 2nd); // The 2nd column is 25% wide
+	@include table-col(3 of 12 for 3rd); // The 3rd column is 25% wide
+}
+// END-SNIPPET

@@ -1,0 +1,48 @@
+// BEGIN-SNIPPET docs-demo-electron-package.json
+{
+  "build": {
+    "appId": "com.abcum.app",
+    "asar": true,
+    "copyright": "Copyright © 2018 Abcum Ltd.",
+    "directories": {
+      "output": "electron"
+    },
+    "dmg": {
+      "background": "build/dmg/back.tiff",
+      "iconSize": 120,
+      "internetEnabled": true,
+      "title": "Abcum",
+      "contents": [
+        {
+          "x": 175,
+          "y": 340
+        },
+        {
+          "x": 485,
+          "y": 340,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "fileAssociations": [],
+    "files": [
+      "index.js",
+      "dist/**",
+      "build/*.js"
+    ],
+    "mac": {
+      "darkModeSupport": true,
+      "icon": "build/mac/icon.png"
+    },
+    "productName": "Abcum",
+    "protocols": [],
+    "publish": {
+      "provider": "s3",
+      "bucket": "desktop.abcum.com",
+      "path": "/",
+      "acl": null
+    }
+  }
+}
+// END-SNIPPET

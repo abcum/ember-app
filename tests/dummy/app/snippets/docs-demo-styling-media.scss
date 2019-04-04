@@ -1,0 +1,24 @@
+// BEGIN-SNIPPET docs-demo-styling-media.scss
+grid-item {
+
+	height:100px;
+	padding:30px;
+	border:1px solid #00bfff;
+	background-color:#ff0000;
+
+	@include grid-item(1 of 5 break every 5);
+
+	@include media(ipad landscape) {
+		@include grid-item(1 of 4 break every 4);
+	}
+
+	@include media(iphone4, iphone5) {
+		@include grid-item(1 of 2 break every 2);
+	}
+
+	@include media(iphone6, iphone7, ipad portrait) {
+		@include grid-item(1 of 3 break every 3);
+	}
+
+}
+// END-SNIPPET

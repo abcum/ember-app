@@ -1,0 +1,10 @@
+// BEGIN-SNIPPET docs-demo-styling-animations.scss
+@import "ember-visuals/animations/alerts/bounce";
+
+.simple-bouncer {
+	@include animation(bounce 3s linear 2s infinite);
+}
+.special-bouncer {
+	@include animation(bounce 3s $ease-in-out-circ 2s infinite);
+}
+// END-SNIPPET

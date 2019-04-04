@@ -1,0 +1,17 @@
+<label {{action "open"}}>{{sanitize label}}</label>
+
+<app-dropdown-cover hidden={{hidden}} role="button" onclick={{action "close"}} />
+
+<app-dropdown-front hidden={{hidden}}>
+
+	{{yield (hash
+		group=(component "app-dropdown/group")
+		option=(component "app-dropdown/option"
+			input=this
+			select=(action "select")
+			register=(action "register")
+			unregister=(action "unregister")
+		)
+	)}}
+
+</app-dropdown-front>

@@ -1,0 +1,41 @@
+{{docs-header prefix="ember-cli" name="ember-app" githubUrl="https://github.com/abcum/ember-app"}}
+
+{{#docs-viewer as |viewer|}}
+
+	{{#viewer.nav as |nav|}}
+
+		{{nav.section "Introduction"}}
+		{{nav.item "Setup" "docs.index"}}
+		{{nav.item "Config" "docs.config"}}
+		{{nav.item "Styling" "docs.styling"}}
+		{{nav.item "Modules" "docs.modules"}}
+		{{nav.item "Electron" "docs.electron"}}
+
+		{{nav.section "Services"}}
+		{{#if (begs-with (route-name) "docs.services")}}
+			{{docs-nav-services nav=nav}}
+		{{else}}
+			{{docs-nav-services nav=nav class="hide"}}
+		{{/if}}
+
+		{{nav.section "Elements"}}
+		{{#if (begs-with (route-name) "docs.elements")}}
+			{{docs-nav-elements nav=nav}}
+		{{else}}
+			{{docs-nav-elements nav=nav class="hide"}}
+		{{/if}}
+
+		{{nav.section "Helpers"}}
+		{{#if (begs-with (route-name) "docs.helpers")}}
+			{{docs-nav-helpers nav=nav}}
+		{{else}}
+			{{docs-nav-helpers nav=nav class="hide"}}
+		{{/if}}
+
+	{{/viewer.nav}}
+
+	{{#viewer.main}}
+		{{outlet}}
+	{{/viewer.main}}
+
+{{/docs-viewer}}

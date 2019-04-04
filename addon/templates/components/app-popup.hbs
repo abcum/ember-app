@@ -1,0 +1,8 @@
+{{#if enabled}}
+	{{#-in-element (get-element-by-tag "app-render")}}
+		<app-popup id={{this.uniq}} side={{this.side}} visible={{this.visible}} class={{this.itemClass}}>
+			<arrow></arrow>
+			{{~yield~}}
+		</app-popup>
+	{{/-in-element}}
+{{/if}}

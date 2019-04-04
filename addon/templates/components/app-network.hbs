@@ -1,0 +1,14 @@
+{{yield (hash
+	node=(component "app-network/node"
+		network=this
+		register=(action "registerNode")
+		unregister=(action "unregisterNode")
+		reregister=(action "reregisterNode")
+	)
+	edge=(component "app-network/edge"
+		network=this
+		register=(action "registerEdge")
+		unregister=(action "unregisterEdge")
+		reregister=(action "reregisterEdge")
+	)
+)}}

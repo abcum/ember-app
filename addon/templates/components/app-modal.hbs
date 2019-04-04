@@ -1,0 +1,7 @@
+{{#-in-element (get-element-by-tag "app-render")}}
+	<app-modal-cover role="button" class={{class}} onclick={{action "close"}}>
+		<app-modal-front class={{class}}>
+			{{~yield~}}
+		</app-modal-front>
+	</app-modal-cover>
+{{/-in-element}}

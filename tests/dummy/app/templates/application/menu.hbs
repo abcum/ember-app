@@ -1,0 +1,15 @@
+{{#if (is-electron)}}
+	{{app-context-menu-item role="cut"}}
+	{{app-context-menu-item role="copy"}}
+	{{app-context-menu-item role="paste"}}
+	{{app-context-menu-item role="selectall"}}
+	{{app-context-menu-item type="separator"}}
+{{/if}}
+
+{{app-context-menu-item click=(action (history-back)) label="Back"}}
+{{app-context-menu-item click=(action (history-forward)) label="Forward"}}
+{{app-context-menu-item click=(action (reload)) label="Reload Page" role="reload"}}
+
+{{app-context-menu-item type="separator"}}
+
+{{app-context-menu-item label="© Abcum Ltd" enabled=false}}

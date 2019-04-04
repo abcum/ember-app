@@ -1,0 +1,82 @@
+app-tag {
+
+	color:#ffffff;
+	display:inline;
+	cursor:default;
+	overflow:hidden;
+	font-size:inherit;
+	line-height:inherit;
+	white-space:nowrap;
+	vertical-align:middle;
+	padding:2px 8px 2px 8px;
+	background-color:#BBBBBB;
+
+	&:empty {
+		display:none;
+	}
+
+	&[curved] {
+		border-radius:10px;
+		&:before {
+			border-radius:10px 0 0 10px;
+		}
+		close {
+			border-radius:0 10px 10px 0;
+		}
+	}
+
+	&[key] {
+
+		padding-left:0;
+
+		&:before {
+			color:#ffffff;
+			display:inline;
+			margin-right:8px;
+			font-size:inherit;
+			content:attr(key);
+			padding:2px 8px 2px 8px;
+			background-color:#333333;
+		}
+
+	}
+
+	&[closeable] {
+
+		padding-right:0;
+
+		close {
+
+			color:#4a4a4a;
+			cursor:pointer;
+			display:inline;
+			margin-left:8px;
+			font-size:inherit;
+			padding:2px 8px 2px 8px;
+			background-color:#f5f5f5;
+
+			&:hover {
+				background-color:#efefef;
+			}
+
+		}
+
+	}
+
+	&[type='pale']				{ background-color: #F0F0F0; color: #666666; }
+	&[type='grey']				{ background-color: #E0E0E0; color: #000000; }
+	&[type='light']				{ background-color: #CCCCCC; }
+	&[type='green']				{ background-color: #03C759; }
+	&[type='blue']				{ background-color: #00BFFF; }
+	&[type='royal']				{ background-color: #427af4; }
+	&[type='turquoise']			{ background-color: #42f4df; }
+	&[type='yellow']			{ background-color: #f4eb41; }
+	&[type='orange']			{ background-color: #ffba0c; }
+	&[type='red']				{ background-color: #ff463d; }
+	&[type='pink']				{ background-color: #FA0266; }
+	&[type='black']				{ background-color: #444444; }
+	&[type='lime']				{ background-color: #8EDE0D; }
+	&[type='purple']			{ background-color: #601b75; }
+	&[type='dark']				{ background-color: #777777; }
+
+}
