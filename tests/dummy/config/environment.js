@@ -16,6 +16,22 @@ module.exports = function(environment) {
 			version: {
 				enabled: false,
 			},
+			metrics: [{
+				name: 'google-analytics',
+				environments: ['production'],
+				config: {
+					id: 'UA-26694842-7',
+					debug: false,
+					trace: false,
+					sendHitTask: true,
+					require: [
+						'maxScrollTracker',
+						'outboundLinkTracker',
+						'socialWidgetTracker',
+						'pageVisibilityTracker',
+					],
+				}
+			}],
 			plugins: {
 				chart: true,
 				marked: true,

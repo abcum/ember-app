@@ -21,6 +21,7 @@
     "test:all": "ember try:each"
   },
   "dependencies": {
+    "autotrack": "^2.4.1",
     "chart.js": "^2.8.0",
     "codemirror": "^5.45.0",
     "electron": "^4.1.3",

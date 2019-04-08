@@ -75,6 +75,11 @@ module.exports = {
 			exports: { Electron: ['default'] }
 		});
 
+		// Import Autotrack analytics library
+		app.import('node_modules/autotrack/autotrack.js', {
+			outputFile: 'assets/autotrack.js'
+		});
+
 		// Include `marked.js` library
 		if (this.opt.plugins && this.opt.plugins.marked) {
 			this.app.import('node_modules/marked/marked.min.js');

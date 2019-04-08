@@ -41,6 +41,46 @@ module.exports = function(environment) {
 					'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700',
 				],
 			},
+			metrics: [
+				{
+					name: 'google-analytics',
+					environments: ['production'],
+					config: {
+						id: 'UA-12345678-1',
+						debug: false,
+						trace: false,
+						sendHitTask: true,
+						require: [
+							'ecommerce',
+							'maxScrollTracker',
+							'outboundLinkTracker',
+							'socialWidgetTracker',
+							'pageVisibilityTracker',
+						],
+					}
+				},
+				{
+					name: 'facebook-pixel',
+					environments: ['production'],
+					config: {
+						id: '1234567890'
+					}
+				},
+				{
+					name: 'mixpanel',
+					environments: ['production'],
+					config: {
+						id: '0f76c037-4d76-4fce-8a0f-a9a8f89d1453'
+					}
+				},
+				{
+					name: 'intercom',
+					environments: ['production'],
+					config: {
+						id: 'def1abc2'
+					}
+				},
+			],
 			plugins: {
 				chart: true, // Enable chart.js library
 				marked: true, // Enable marked.js library

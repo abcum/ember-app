@@ -20,6 +20,7 @@ Router.map(function() {
 			this.route('electron');
 			this.route('internet');
 			this.route('location');
+			this.route('metrics');
 			this.route('storage');
 			this.route('version');
 			this.route('worker');
