@@ -1,1 +1,1 @@
-export { default } from '@abcum/ember-charts/components/app-network/edge';
+export { default } from '@abcum/ember-app/components/app-network/edge';

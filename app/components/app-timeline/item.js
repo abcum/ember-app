@@ -1,1 +1,1 @@
-export { default } from '@abcum/ember-charts/components/app-timeline/item';
+export { default } from '@abcum/ember-app/components/app-timeline/item';
