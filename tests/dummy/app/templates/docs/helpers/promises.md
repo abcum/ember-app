@@ -16,6 +16,21 @@ If the `author` exists, but the promise has not yet been loaded, then the templa
 {{/if}}
 ```
 
+## delay
+
+Specifies a delay in milliseconds after which the promise is resolved.
+
+{{#docs-demo as |demo|}}
+	{{#demo.example name='docs-demo-helpers-promises-delay.hbs'}}
+		{{#if (await (delay 2500))}}
+			Finished waiting for the delay
+		{{else}}
+			Waiting
+		{{/if}}
+	{{/demo.example}}
+	{{demo.snippet 'docs-demo-helpers-promises-delay.hbs'}}
+{{/docs-demo}}
+
 ## is-fulfilled
 
 Returns true when the promise is fulfilled.
@@ -25,6 +40,17 @@ Returns true when the promise is fulfilled.
 	The relationship promise has been fulfilled.
 {{/if}}
 ```
+
+{{#docs-demo as |demo|}}
+	{{#demo.example name='docs-demo-helpers-promises-fulfilled.hbs'}}
+		{{#if (is-fulfilled (delay 2500))}}
+			Yes it is fulfilled
+		{{else}}
+			Not fulfilled
+		{{/if}}
+	{{/demo.example}}
+	{{demo.snippet 'docs-demo-helpers-promises-fulfilled.hbs'}}
+{{/docs-demo}}
 
 ## is-loaded
 
@@ -46,6 +72,17 @@ Returns true if the promise is pending.
 {{/if}}
 ```
 
+{{#docs-demo as |demo|}}
+	{{#demo.example name='docs-demo-helpers-promises-pending.hbs'}}
+		{{#if (is-pending (delay 2500))}}
+			Yes it is pending
+		{{else}}
+			Not pending
+		{{/if}}
+	{{/demo.example}}
+	{{demo.snippet 'docs-demo-helpers-promises-pending.hbs'}}
+{{/docs-demo}}
+
 ## is-rejected
 
 Returns true when the promise is rejected.
@@ -55,6 +92,17 @@ Returns true when the promise is rejected.
 	The relationship promise has been rejected.
 {{/if}}
 ```
+
+{{#docs-demo as |demo|}}
+	{{#demo.example name='docs-demo-helpers-promises-rejected.hbs'}}
+		{{#if (is-rejected (delay 2500))}}
+			Yes it is rejected
+		{{else}}
+			Not rejected
+		{{/if}}
+	{{/demo.example}}
+	{{demo.snippet 'docs-demo-helpers-promises-rejected.hbs'}}
+{{/docs-demo}}
 
 ## is-updating
 

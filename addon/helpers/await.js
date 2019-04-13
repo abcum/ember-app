@@ -1,6 +1,5 @@
-import { observer } from '@ember/object';
 import Helper from '@ember/component/helper';
-import { Promise } from 'rsvp';
+import { observer } from '@ember/object';
 
 export default Helper.extend({
 
@@ -20,19 +19,25 @@ export default Helper.extend({
 
 		this.promise = promise;
 
-		return this.process( Promise.resolve(promise) );
+		this.process(promise);
+
+		return this.get('value');
 
 	},
 
-	process(promise) {
+	async process(promise) {
 
-		let value = promise.then( (value) => {
+		try {
+
+			let value = await promise;
+
 			this.set('value', value);
-		}).catch(() => {
-			this.set('value', null);
-		});
 
-		return this.set('value', value);
+		} catch(e) {
+
+			// Helper is no longer being rendered
+
+		}
 
 	},
 

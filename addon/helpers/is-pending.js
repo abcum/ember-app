@@ -4,13 +4,25 @@ export default Await.extend({
 
 	value: true,
 
-	process(promise) {
+	async process(promise) {
 
-		promise.catch(() => {}).finally(() => {
-			this.set('value', false);
-		});
+		try {
 
-		return this.get('value');
+			await promise;
+
+		} finally {
+
+			try {
+
+				this.set('value', false);
+
+			} catch(e) {
+
+				// Helper is no longer being rendered
+
+			}
+
+		}
 
 	},
 
