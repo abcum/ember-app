@@ -32,6 +32,7 @@ Router.map(function() {
 			this.route('contextmenu');
 			this.route('dropdown');
 			this.route('editable');
+			this.route('frame');
 			this.route('gravatar');
 			this.route('initials');
 			this.route('image');
