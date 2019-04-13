@@ -5,6 +5,7 @@ export default {
 	windowLocation,
 	addEventListener,
 	removeEventListener,
+	intersectionObserver,
 }
 
 export function fastboot() {
@@ -79,6 +80,17 @@ export function removeEventListener() {
 	try {
 		if (!window) throw "exception";
 		if (!window.removeEventListener) throw "exception";
+		return true;
+	} catch (e) {
+		return false;
+	}
+}
+
+export function intersectionObserver() {
+	try {
+		if (!window) throw "exception";
+		if (!window.IntersectionObserver) throw "exception";
+		if (!window.IntersectionObserverEntry) throw "exception";
 		return true;
 	} catch (e) {
 		return false;

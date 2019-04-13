@@ -1,2 +1,7 @@
-<img width={{width}} height={{height}} alt={{alt}} src={{small}}>
-<img width={{width}} height={{height}} alt={{alt}} src={{large}}>
+{{#if lqip}}
+	<img alt={{alt}} src={{lqip}} width={{width}} height={{height}}>
+{{/if}}
+
+{{#if visible}}
+	<img alt={{alt}} src={{src}} sizes={{sizes}} srcset={{srcset}} width={{width}} height={{height}}>
+{{/if}}
