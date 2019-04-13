@@ -50,7 +50,7 @@ To display a close button, in order to run a callback when a tag is remove, pass
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-tag-tagged-closeable.hbs'}}
-		{{app-tag type="red" text="Closeable tag" close=(alert 'Closed')}}
+		{{app-tag type="red" text="Closeable tag" close=(console 'Closed')}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-tag-tagged-closeable.hbs'}}
 {{/docs-demo}}
@@ -61,20 +61,26 @@ Tags are available in a number of different colours, each of which is visible be
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-tag-tagged-types.hbs'}}
+		{{app-tag type="white" text="white"}} &nbsp;
 		{{app-tag type="pale" text="pale"}} &nbsp;
 		{{app-tag type="grey" text="grey"}} &nbsp;
 		{{app-tag type="light" text="light"}} &nbsp;
 		{{app-tag type="dark" text="dark"}} &nbsp;
 		{{app-tag type="black" text="black"}} &nbsp;
+		{{app-tag type="chartreuse" text="chartreuse"}} &nbsp;
 		{{app-tag type="green" text="green"}} &nbsp;
+		{{app-tag type="seafoam" text="seafoam"}} &nbsp;
 		{{app-tag type="lime" text="lime"}} &nbsp;
+		{{app-tag type="azure" text="azure"}} &nbsp;
 		{{app-tag type="blue" text="blue"}} &nbsp;
 		{{app-tag type="royal" text="royal"}} &nbsp;
 		{{app-tag type="turquoise" text="turquoise"}} &nbsp;
 		{{app-tag type="yellow" text="yellow"}} &nbsp;
 		{{app-tag type="orange" text="orange"}} &nbsp;
 		{{app-tag type="red" text="red"}} &nbsp;
+		{{app-tag type="strawberry" text="strawberry"}} &nbsp;
 		{{app-tag type="pink" text="pink"}} &nbsp;
+		{{app-tag type="magenta" text="magenta"}} &nbsp;
 		{{app-tag type="purple" text="purple"}} &nbsp;
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-tag-tagged-types.hbs'}}

@@ -63,20 +63,26 @@ app-tag {
 
 	}
 
+	&[type='white']				{ background-color: #ffffff; color: #666666; }
 	&[type='pale']				{ background-color: #F0F0F0; color: #666666; }
 	&[type='grey']				{ background-color: #E0E0E0; color: #000000; }
-	&[type='light']				{ background-color: #CCCCCC; }
-	&[type='green']				{ background-color: #03C759; }
+
+	&[type='azure']				{ background-color: #1c14ef; }
+	&[type='black']				{ background-color: #444444; }
 	&[type='blue']				{ background-color: #00BFFF; }
+	&[type='chartreuse']		{ background-color: #70ff77; }
+	&[type='green']				{ background-color: #03C759; }
+	&[type='light']				{ background-color: #CCCCCC; }
+	&[type='lime']				{ background-color: #77ef15; }
+	&[type='magenta']			{ background-color: #FA0266; }
+	&[type='orange']			{ background-color: #ffba0c; }
+	&[type='pink']				{ background-color: #ffc6fa; }
+	&[type='purple']			{ background-color: #601b75; }
+	&[type='red']				{ background-color: #ff463d; }
 	&[type='royal']				{ background-color: #427af4; }
+	&[type='seafoam']			{ background-color: #42f49e; }
+	&[type='strawberry']		{ background-color: #ff5656; }
 	&[type='turquoise']			{ background-color: #42f4df; }
 	&[type='yellow']			{ background-color: #f4eb41; }
-	&[type='orange']			{ background-color: #ffba0c; }
-	&[type='red']				{ background-color: #ff463d; }
-	&[type='pink']				{ background-color: #FA0266; }
-	&[type='black']				{ background-color: #444444; }
-	&[type='lime']				{ background-color: #8EDE0D; }
-	&[type='purple']			{ background-color: #601b75; }
-	&[type='dark']				{ background-color: #777777; }
 
 }
