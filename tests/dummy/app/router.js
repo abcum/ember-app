@@ -37,6 +37,7 @@ Router.map(function() {
 			this.route('gravatar');
 			this.route('initials');
 			this.route('image');
+			this.route('input');
 			this.route('link');
 			this.route('modal');
 			this.route('popup');

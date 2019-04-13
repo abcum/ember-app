@@ -32,6 +32,20 @@
 	);
 }
 
+input.ember-text-field, textarea.ember-text-area {
+	padding:5px;
+	width:300px;
+	border:1px solid #cccccc;
+	&:invalid { border:1px solid red; }
+}
+
+input[type='color'] {
+	border:0;
+	padding:0;
+	width:310px;
+	height:40px;
+}
+
 .docs-mt-2 {
 	margin-top:0rem; /* 0.5rem */
 }
