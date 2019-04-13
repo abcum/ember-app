@@ -17,7 +17,7 @@ export default Mixin.create({
 			let val = this.get(prop);
 			let num = parseInt(val);
 
-			if (num) {
+			if (String(num) === String(val)) {
 				this.element.style[show] = num + 'px';
 			} else {
 				this.element.style[show] = val;
