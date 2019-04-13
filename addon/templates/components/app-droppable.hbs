@@ -1,0 +1,7 @@
+{{app-droppable/input change=(action "change")}}
+
+{{#if hasBlock}}
+	{{yield this}}
+{{else}}
+	<message></message>
+{{/if}}
