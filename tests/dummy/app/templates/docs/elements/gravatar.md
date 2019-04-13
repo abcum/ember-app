@@ -41,7 +41,8 @@ If no gravatar image is available with the specified email address, then a fallb
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-gravatar-fallback.hbs'}}
-		{{app-gravatar email="doesnotexist@abcum.com"}}
+		{{app-gravatar gender="m" email="doesnotexist@abcum.com"}}
+		{{app-gravatar gender="f" email="doesnotexist@abcum.com"}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-gravatar-fallback.hbs'}}
 {{/docs-demo}}

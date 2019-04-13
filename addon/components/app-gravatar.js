@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import StylesMixin from '../mixins/styles';
-import image from '../utils/avatar';
+import { computed } from '@ember/object';
+import avatar from '../utils/avatar';
 import md5 from "../utils/md5";
 
 export default Component.extend(StylesMixin, {
@@ -8,8 +9,6 @@ export default Component.extend(StylesMixin, {
 	tagName: 'app-gravatar',
 
 	size: 80,
-
-	image: '',
 
 	attributeBindings: [
 		'circular',
@@ -21,20 +20,25 @@ export default Component.extend(StylesMixin, {
 		'image:background-image',
 	]),
 
-	didReceiveAttrs() {
+	md5: computed('email', function() {
+		return md5(this.get('email'));
+	}),
 
-		this._super(...arguments);
+	err: computed('gender', function() {
+		let g = this.get('gender') || 'm';
+		return `data:image/svg+xml;base64,${avatar[g]}`;
+	}),
 
+	src: computed('md5', 'size', function() {
+		let e = this.get('md5');
 		let s = this.get('size');
-		let e = md5(this.get('email'));
+		return `https://secure.gravatar.com/avatar/${e}?s=${s}&d=404`;
+	}),
 
-		let i = `https://secure.gravatar.com/avatar/${e}?s=${s}&d=404`;
-		let d = `data:image/svg+xml;base64,${image}`;
-
-		this.set('image', `url('${i}'), url('${d}')`);
-
-		this.set('src', i);
-
-	},
+	image: computed('err', 'src', function() {
+		let s = this.get('src');
+		let e = this.get('err');
+		return `url('${s}'), url('${e}')`;
+	}),
 
 });
