@@ -5,7 +5,10 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abcum/ember-app.git"
+  },
   "license": "MIT",
   "author": "",
   "directories": {
@@ -71,5 +74,6 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  }
+  },
+  "homepage": "https://abcum.github.io/ember-app"
 }
