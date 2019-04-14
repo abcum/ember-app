@@ -42,6 +42,7 @@ Router.map(function() {
 			this.route('modal');
 			this.route('popup');
 			this.route('select');
+			this.route('social');
 			this.route('tag');
 		});
 
