@@ -2,7 +2,7 @@
 
 The `metrics` service adds functionality for tracking app usage analytics using external analytics service providers. The built-in analytics providers include Google Analytics, Facebook Pixel, Mixpanel, Heap Analytics, and Intercom.
 
-Integration is configured using the [`metrics`](/docs/config) configuration options. Page views are tracked automatically across all providers, meaning no custom page tracking code is required.
+Integration is configured using the {{#link-to "docs.config"}}`metrics`{{/link-to}} configuration options. Page views are tracked automatically across all providers, meaning no custom page tracking code is required.
 
 ## Identifying a user
 

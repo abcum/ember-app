@@ -6,7 +6,7 @@ It does this by creating and publishing a `vertion.txt` file at the base of the 
 
 It is also possible to set the service to trigger an application update automatically, when a new version is found. It does this by reloading the page.
 
-> Only one of the `worker` or `version` services can be [enabled](/docs/config) at the same time.
+> Only one of the `worker` or `version` services can be {{#link-to "docs.config"}}enabled{{/link-to}} at the same time.
 
 ## Update available?
 

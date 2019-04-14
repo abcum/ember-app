@@ -81,7 +81,7 @@ The format helpers enable easy formatting of different units.
 
 ## markdown
 
-> This requires the [`marked`](/docs/config) plugin to be enabled.
+> This requires the {{#link-to "docs.config"}}`marked`{{/link-to}} plugin to be enabled.
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-helpers-format-markdown.hbs'}}

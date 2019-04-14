@@ -6,7 +6,7 @@ It does this by creating and publishing a `sw.js` service worker file at the bas
 
 It is also possible to set the service to trigger an application update automatically, when a new version is found. It does this by reloading all assets in the cache, and forcing the service worker to update on all pages.
 
-> Only one of the `worker` or `version` services can be [enabled](/docs/config) at the same time.
+> Only one of the `worker` or `version` services can be {{#link-to "docs.config"}}enabled{{/link-to}} at the same time.
 
 ## Update available?
 

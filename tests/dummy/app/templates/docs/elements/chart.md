@@ -2,7 +2,7 @@
 
 The `app-chart` component enables adding [Chart.js](https://www.chartjs.org/) charts to an application.
 
-> This functionality requires the [`chart`](/docs/config) plugin to be enabled.
+> This functionality requires the {{#link-to "docs.config"}}`chart`{{/link-to}} plugin to be enabled.
 
 ## Bar charts
 
