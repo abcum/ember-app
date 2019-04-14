@@ -44,10 +44,10 @@ module.exports = {
 		this._super.included(app);
 
 		this.app = app;
-		this.opt = this.opt || {};
-		this.opt.fingerprint = this.opt.fingerprint || {};
-		this.opt.fingerprint.exclude = this.opt.fingerprint.exclude || [];
-		this.opt.fingerprint.exclude.push('version.txt', 'sw.js');
+		this.app.options = this.app.options || {};
+		this.app.options.fingerprint = this.app.options.fingerprint || {};
+		this.app.options.fingerprint.exclude = this.app.options.fingerprint.exclude || [];
+		this.app.options.fingerprint.exclude.push('version.txt', 'sw.js');
 
 		this.opt = this.project.config(process.env.EMBER_ENV)['ember-app'] || {};
 
