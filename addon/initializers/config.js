@@ -27,10 +27,14 @@ export default function(application) {
 
 	let option = Object.assign({}, defaults, config['ember-app']);
 
+	application.register('config:application', config, { instantiate: false });
+
 	application.register('config:ember-app', option, { instantiate: false });
 
 	application.inject('service:electron', 'config', 'config:ember-app');
 	application.inject('service:version', 'config', 'config:ember-app');
 	application.inject('service:worker', 'config', 'config:ember-app');
+
+	application.inject('service:rooturl', 'env', 'config:application');
 
 }

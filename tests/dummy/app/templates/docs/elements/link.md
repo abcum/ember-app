@@ -8,8 +8,8 @@ To open a link in another tab (in the browser), or in a new browser window (in E
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-link.hbs'}}
-		{{#app-link url="/logo.png"}}
-			<img src="/logo.png" />
+		{{#app-link url=(root-url "/img/logo.png")}}
+			<img src={{root-url "/img/logo.png"}} />
 		{{/app-link}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-link.hbs'}}
@@ -23,8 +23,8 @@ To download a file (in the browser), or directly inside the application (in Elec
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-link-download.hbs'}}
-		{{#app-link url="/logo.png" download="abcum"}}
-			<img src="/logo.png" />
+		{{#app-link url=(root-url "/img/logo.png") download="abcum"}}
+			<img src={{root-url "/img/logo.png"}} />
 		{{/app-link}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-link-download.hbs'}}

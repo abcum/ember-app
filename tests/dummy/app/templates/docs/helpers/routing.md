@@ -44,6 +44,17 @@ Calls `window.location.reload()` enabling reloading the page, or changing the ur
 {{my-component onkeypress=(reload)}}
 ```
 
+## root-url
+
+Enables relative URLs in an Ember.js application, relative to the application's rootURL.
+
+{{#docs-demo as |demo|}}
+	{{#demo.example name='docs-demo-helper-root-url.hbs'}}
+		<img src={{root-url "/img/logo.png"}}>
+	{{/demo.example}}
+	{{demo.snippet 'docs-demo-helper-root-url.hbs'}}
+{{/docs-demo}}
+
 ## route-name
 
 Retrieves the name of the current route name.
