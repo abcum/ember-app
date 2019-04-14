@@ -74,7 +74,7 @@ The `app-social/telegram` shares a message on Telegram if it is installed.
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-social-telegram.hbs'}}
 		{{#app-social/telegram url="https://abcum.com" text="Abcum Website"}}
-			Share using Telegram
+			Share on Telegram
 		{{/app-social/telegram}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-social-telegram.hbs'}}
