@@ -76,7 +76,8 @@ module.exports = function(environment) {
 	}
 
 	if (environment === 'production') {
-		ENV.rootURL = 'ADDON_DOCS_ROOT_URL';
+		ENV.rootURL = 'ember-app';
+		ENV.locationType = 'hash';
 	}
 
 	return ENV;
