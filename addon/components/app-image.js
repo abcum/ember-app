@@ -38,9 +38,4 @@ export default Component.extend(ViewportMixin, StylesMixin, {
 		this.set('visible', true);
 	},
 
-	didLeaveViewport() {
-		this._super(...arguments);
-		this.set('visible', false);
-	},
-
 });
