@@ -1,4 +1,4 @@
-// BEGIN-SNIPPET docs-demo-helpers-format-markdown.js
+// BEGIN-SNIPPET docs-demo-helpers-format-plaintext.js
 import Controller from '@ember/controller';
 
 export default Controller.extend({
