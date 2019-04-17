@@ -66,17 +66,17 @@ module.exports = {
 		}
 
 		// Check if we are in Electron
-		app.import('vendor/electron/inject.js', {
+		this.app.import('vendor/electron/inject.js', {
 			outputFile: 'assets/electron.js'
 		});
 
 		// Import ES6 library for Electron
-		app.import('vendor/electron/import.js', {
+		this.app.import('vendor/electron/import.js', {
 			exports: { Electron: ['default'] }
 		});
 
 		// Import Autotrack analytics library
-		app.import('node_modules/autotrack/autotrack.js', {
+		this.app.import('node_modules/autotrack/autotrack.js', {
 			outputFile: 'assets/autotrack.js'
 		});
 
