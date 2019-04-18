@@ -43,12 +43,23 @@ module.exports = {
 
 		this._super.included(app);
 
-		this.app = app;
-		this.app.options = this.app.options || {};
+		this.app = app; this.app.options = this.app.options || {};
+
+		// Don't store app config in meta tag
+		this.app.options.storeConfigInMeta = false;
+
+		// Ensure specific files are ignored
 		this.app.options.fingerprint = this.app.options.fingerprint || {};
 		this.app.options.fingerprint.exclude = this.app.options.fingerprint.exclude || [];
 		this.app.options.fingerprint.exclude.push('version.txt', 'sw.js');
 
+		// Ensure all file types are fingerprinted
+		this.app.options.fingerprint = this.app.options.fingerprint || {};
+		this.app.options.fingerprint.extensions = this.app.options.fingerprint.extensions || [];
+		this.app.options.fingerprint.extensions.push('js', 'css', 'eot', 'otf', 'ttf', 'woff', 'woff2');
+		this.app.options.fingerprint.extensions.push('gif', 'ico', 'jpg', 'jp2', 'png', 'svg', 'tiff', 'webp');
+
+		// Get the ember-app configuration options
 		this.opt = this.project.config(process.env.EMBER_ENV)['ember-app'] || {};
 
 		// Specify the default minify options
