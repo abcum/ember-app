@@ -4,11 +4,11 @@ var path = require('path');
 
 let Stew = require('broccoli-stew');
 let Tree = require('broccoli-merge-trees');
-let Funnel = require('broccoli-funnel');
 let Rollup = require('broccoli-rollup');
+let Minify = require('./plugin/minify');
+let Images = require('./plugin/images');
 let Worker = require('./plugin/worker');
 let Version = require('./plugin/version');
-let Minify = require('./plugin/minify');
 var uglify = require('broccoli-uglify-sourcemap');
 
 const fastboot = {
@@ -21,6 +21,26 @@ const defaults = {
 	},
 	worker: {
 		enabled: false,
+	},
+	images: {
+		jpeg: {
+			quality: 80,
+			progressive: false,
+		},
+		png: {
+			progressive: false,
+			compressionLevel: 9,
+		},
+		webp: {
+			quality: 80,
+			lossless: false,
+			nearLossless: false,
+		},
+		tiff: {
+			quality: 80,
+			compression: 'jpeg',
+			nearLossless: false,
+		},
 	},
 	minify: {
 		collapseWhitespace : true,
@@ -64,6 +84,9 @@ module.exports = {
 
 		// Specify the default minify options
 		this.opt.minify = Object.assign({}, defaults.minify, this.opt.minify);
+
+		// Specify the default images options
+		this.opt.images = Object.assign({}, defaults.images, this.opt.images);
 
 		// Specify the default worker options
 		this.opt.worker = Object.assign({}, defaults.worker, this.opt.worker);
@@ -206,13 +229,13 @@ module.exports = {
 
 		let p = this.treeFor('public');
 
-		// Get a funnel of the index.html file only.
-
-		let f = new Funnel(tree, { files: ['index.html'] });
-
 		// Minify the index.html file
 
-		let h = new Minify(f, this.opt.minify);
+		let h = new Minify(tree, this.opt.minify);
+
+		// Compress all web images
+
+		let i = new Images([tree], this.opt.images);
 
 		// Create the version.txt file
 
@@ -222,7 +245,7 @@ module.exports = {
 
 		let w = new Worker([tree], this.opt.worker);
 
-		let r = new Rollup(new Tree([p, w]), {
+		w = new Rollup(new Tree([p, w]), {
 			rollup: {
 				input: 'sw.js',
 				output: {
@@ -233,9 +256,11 @@ module.exports = {
 			}
 		});
 
-		let u = this.app.env === 'production' ? uglify(r) : r;
+		w = this.app.env === 'production' ? uglify(w) : w;
 
-		return new Tree([tree, h, v, u], { overwrite: true });
+		// Output the fully bundled tree
+
+		return new Tree([tree, h, i, v, w], { overwrite: true });
 
 	},
 

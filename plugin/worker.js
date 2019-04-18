@@ -1,9 +1,9 @@
 'use strict';
 
 const Plugin = require('broccoli-plugin');
-const fs = require('fs');
-const path = require('path');
 const glob = require('glob');
+const path = require('path');
+const fs = require('fs');
 
 module.exports = class Worker extends Plugin {
 
@@ -51,8 +51,8 @@ module.exports = class Worker extends Plugin {
 
 		let paths = [];
 		let specific = this.opts.specific || [];
-		let includes = this._find( this.opts.includes || [] );
-		let excludes = this._find( this.opts.excludes || [] );
+		let includes = this.find( this.opts.includes || [] );
+		let excludes = this.find( this.opts.excludes || [] );
 
 		paths = specific.reduce( (paths, path) => paths.concat(path), paths);
 
@@ -76,13 +76,13 @@ module.exports = class Worker extends Plugin {
 
 	}
 
-	_find(globs) {
+	find(globs) {
 
 		let files = [];
 
 		this.inputPaths.forEach(path => {
 			globs.forEach(patt => {
-				glob.sync(patt, { cwd: path, nodir: true }).forEach((file) => {
+				glob.sync(patt, { cwd: path, nodir: true }).forEach(file => {
 					if (files.indexOf(file) === -1) {
 						files.push(file);
 					}
@@ -93,4 +93,5 @@ module.exports = class Worker extends Plugin {
 		return files;
 
 	}
+
 };

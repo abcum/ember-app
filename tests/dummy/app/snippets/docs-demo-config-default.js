@@ -26,6 +26,26 @@ module.exports = function(environment) {
 				autoupdate: false,
 				frequency: 5 * 60 * 1000,
 			},
+			images: {
+				jpeg: {
+					quality: 80,
+					progressive: true,
+				},
+				png: {
+					progressive: true,
+					compressionLevel: 9,
+				},
+				webp: {
+					quality: 80,
+					lossless: false,
+					nearLossless: false,
+				},
+				tiff: {
+					quality: 80,
+					compression: 'jpeg',
+					nearLossless: false,
+				},
+			},
 			minify: {
 				collapseWhitespace : true,
 				removeComments : true,
