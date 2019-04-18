@@ -84,8 +84,10 @@ module.exports = function(environment) {
 			plugins: {
 				chart: true, // Enable chart.js library
 				marked: true, // Enable marked.js library
-				moment: true, // Enable moment.js library
 				vis: true, // Enable vis.js library
+				moment: { // Enable moment.js library
+					locales: ['en-gb'],
+				},
 				codemirror: { // Enable codemirror library
 					includeTags: true,
 					includeComments: true,
