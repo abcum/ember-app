@@ -76,6 +76,7 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
+    "defaultBlueprint": "ember-app",
     "demoURL": "https://abcum.github.io/ember-app"
   },
   "homepage": "https://abcum.github.io/ember-app"

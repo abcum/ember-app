@@ -2,7 +2,7 @@
 
 ## Development
 
-To begin developing your Ember app as an Electron app, add an `index.js` file with similar contents to the [example app index file](#example-app-index-file) below. Then run the following command in your Ember app directory to befin development.
+To begin developing your Ember app as an Electron app, add an `electron/main.js` file with similar contents to the [example electron launch file](#example-electron-launch-file) below. Then run the following command in your Ember app directory to befin development.
 
 ```bash
 ember electron:serve
@@ -36,11 +36,11 @@ Alternatively, run this command after every npm package install, by placing it i
 
 {{docs-snippet name='docs-demo-electron-rebuild.json'}}
 
-## Example app index file
+## Example electron launch file
 
 <details>
-	<summary>index.js</summary>
-	{{docs-snippet name='docs-demo-electron-index.js'}}
+	<summary>electron/main.js</summary>
+	{{docs-snippet name='docs-demo-electron-main.js'}}
 </details>
 
 ## Example build configuration

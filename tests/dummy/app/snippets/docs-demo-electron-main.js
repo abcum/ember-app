@@ -1,11 +1,13 @@
-// BEGIN-SNIPPET docs-demo-electron-index.js
+// BEGIN-SNIPPET docs-demo-electron-main.js
 /* eslint-env node */
 
 const { app, BrowserWindow } = require('electron');
 
-const location = process.env.EMBER_ELECTRON_LOCATION || 'ember://dist';
+const location = process.env.EMBER_ELECTRON_LOCATION || 'ember://app';
 
-app.disableHardwareAcceleration();
+require('./src/emberapp')();
+require('./src/mainmenu')();
+require('./src/savefile')();
 
 app.once('ready', () => {
 	loadapp(false);
@@ -17,23 +19,7 @@ app.once('window-all-closed', () => {
 
 app.once('will-finish-launching', () => {
 
-	app.on('open-url', (e, path) => {
-		if (global.lastWindow) {
-			global.lastWindow.webContents.send('open-link', path);
-		}
-	});
-
-	app.on('open-file', (e, path) => {
-		if (global.lastWindow) {
-			global.lastWindow.webContents.send('open-file', path);
-		}
-	});
-
-	app.on('web-contents-created', (e, webContents) => {
-		webContents.on('new-window', (e) => {
-			e.preventDefault();
-		});
-	});
+	app.setAsDefaultProtocolClient('my-app');
 
 	app.on('browser-window-created', (e, window) => {
 
@@ -43,15 +29,6 @@ app.once('will-finish-launching', () => {
 
 		window.on('new-window-for-tab', () => {
 			loadapp(true);
-		});
-
-		window.on('swipe', (e, direction) => {
-			switch (direction) {
-			case 'left':
-				return window.webContents.goForward();
-			case 'right':
-				return window.webContents.goBack();
-			}
 		});
 
 	});
