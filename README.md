@@ -42,7 +42,7 @@ Easily serve, build and deploy an Electron application using built-in Ember CLI 
 
 ### Installation
 
-`ember install ember-app`
+`ember install @abcum/ember-app`
 
 ### Usage
 
