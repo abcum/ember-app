@@ -13,6 +13,7 @@ Router.map(function() {
 		this.route('config');
 		this.route('styling');
 		this.route('modules');
+		this.route('webapp');
 		this.route('electron');
 
 		this.route('services', function() {

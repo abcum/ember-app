@@ -41,6 +41,18 @@ module.exports = function(environment) {
 					'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700',
 				],
 			},
+			webapp: {
+				background: '#ffffff', // Background color for launch page
+				color: '#00bfff', // Theme color of the application
+				description: '', // A general description of the pinned site
+				display: 'standalone', // The preferred display mode for the website
+				name: 'Ember App', // The name of the app when displayed to the user
+				orientation: 'portrait', // The default orientation for the pinned site
+				scope: '/', // The navigation scope of this site's context
+				short: 'ember-app', // A short human-readable name for the application
+				start: '/', // The URL that loads when a user launches the application
+				style: 'default', // The iOS menu bar style for the application
+			},
 			metrics: [
 				{
 					name: 'google-analytics',

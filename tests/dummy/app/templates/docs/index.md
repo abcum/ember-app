@@ -8,8 +8,16 @@
 
 ## Installing
 
+To install the addon run the following command within your Ember.js application.
+
 ```bash
 ember install @abcum/ember-app
+```
+
+To ensure that all of the blueprint files are generated correctly, run the following command.
+
+```bash
+ember generate ember-app
 ```
 
 Once installed, ensure that you have placed an `app-render` component inside your `application.hbs` file.

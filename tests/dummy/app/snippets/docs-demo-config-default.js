@@ -46,6 +46,18 @@ module.exports = function(environment) {
 					nearLossless: false,
 				},
 			},
+			webapp: {
+				background: '#ffffff',
+				color: '#000000',
+				description: '',
+				display: 'standalone',
+				name: '',
+				orientation: 'portrait',
+				scope: '/',
+				short: '',
+				start: '/',
+				style: 'default',
+			},
 			minify: {
 				collapseWhitespace : true,
 				removeComments : true,

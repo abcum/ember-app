@@ -5,8 +5,10 @@ var path = require('path');
 let Stew = require('broccoli-stew');
 let Tree = require('broccoli-merge-trees');
 let Rollup = require('broccoli-rollup');
+let Header = require('./plugin/header');
 let Minify = require('./plugin/minify');
 let Images = require('./plugin/images');
+let Webapp = require('./plugin/webapp');
 let Worker = require('./plugin/worker');
 let Version = require('./plugin/version');
 var uglify = require('broccoli-uglify-sourcemap');
@@ -42,6 +44,18 @@ const defaults = {
 			nearLossless: false,
 		},
 	},
+	webapp: {
+		background: '#ffffff',
+		color: '#000000',
+		description: '',
+		display: 'standalone',
+		name: '',
+		orientation: 'portrait',
+		scope: '/',
+		short: '',
+		start: '/',
+		style: 'default',
+	},
 	minify: {
 		collapseWhitespace : true,
 		removeComments : true,
@@ -73,9 +87,15 @@ module.exports = {
 		this.app.options.fingerprint.exclude = this.app.options.fingerprint.exclude || [];
 		this.app.options.fingerprint.exclude.push('version.txt', 'sw.js');
 
-		// Ensure all file types are fingerprinted
+		// Ensure correct file types are converted
+		this.app.options.fingerprint = this.app.options.fingerprint || {};
+		this.app.options.fingerprint.replaceExtensions = this.app.options.fingerprint.replaceExtensions || [];
+		this.app.options.fingerprint.replaceExtensions.push('html', 'css', 'js', 'webmanifest', 'xml');
+
+		// Ensure correct file types are fingerprinted
 		this.app.options.fingerprint = this.app.options.fingerprint || {};
 		this.app.options.fingerprint.extensions = this.app.options.fingerprint.extensions || [];
+		this.app.options.fingerprint.extensions.push('xml', 'webmanifest');
 		this.app.options.fingerprint.extensions.push('js', 'css', 'eot', 'otf', 'ttf', 'woff', 'woff2');
 		this.app.options.fingerprint.extensions.push('gif', 'ico', 'jpg', 'jp2', 'png', 'svg', 'tiff', 'webp');
 
@@ -87,6 +107,9 @@ module.exports = {
 
 		// Specify the default images options
 		this.opt.images = Object.assign({}, defaults.images, this.opt.images);
+
+		// Specify the default images options
+		this.opt.webapp = Object.assign({}, defaults.webapp, this.opt.webapp);
 
 		// Specify the default worker options
 		this.opt.worker = Object.assign({}, defaults.worker, this.opt.worker);
@@ -230,19 +253,18 @@ module.exports = {
 		let p = this.treeFor('public');
 
 		// Minify the index.html file
-
 		let h = new Minify(tree, this.opt.minify);
 
-		// Compress all web images
+		// Generate the webapp files
+		let a = new Webapp([tree], this.opt.webapp);
 
+		// Compress all web images
 		let i = new Images([tree], this.opt.images);
 
 		// Create the version.txt file
-
 		let v = new Version([tree], this.opt.version);
 
 		// Create the service worker file
-
 		let w = new Worker([tree], this.opt.worker);
 
 		w = new Rollup(new Tree([p, w]), {
@@ -260,11 +282,15 @@ module.exports = {
 
 		// Output the fully bundled tree
 
-		return new Tree([tree, h, i, v, w], { overwrite: true });
+		return new Tree([tree, h, i, a, v, w], { overwrite: true });
 
 	},
 
 	contentFor(type) {
+
+		if (type === 'head') {
+			return Header(this.opt);
+		}
 
 		if (process.env.EMBER_CLI_ELECTRON) {
 			let rootURL = this.project.config(process.env.EMBER_ENV).rootURL;
