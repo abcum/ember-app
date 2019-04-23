@@ -10,7 +10,7 @@ All icons and images for the different browsers and devices are generated automa
 
 To build and deploy the necessary progressive web application icons and launch images, you must ensure that you have created the necessary image files and placed them in the correct folder within your application.
 
-To help generate the necessary icons you can use [this Sketch file](/webapp.sketch).
+To help generate the necessary icons you can use {{#app-link url=(root-url "/webapp.sketch") download="webapp.sketch"}}this Sketch file{{/app-link}}
 
 ### Icon images
 
