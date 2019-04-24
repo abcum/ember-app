@@ -1,0 +1,9 @@
+{{#app-gridlist/view name=name scrollChange=(action "scrollChange")}}
+	{{#app-gridlist/area width=confs.v.w height=confs.v.h}}
+		{{~#each items as |item|~}}
+			{{#app-gridlist/item w=confs.d.w h=confs.d.h kind=kind rows=rows cols=cols colW=colWidth rowH=rowHeight class=itemClass index=item.index model=item.content total=items.length selection=selection onClick=(action "onClick") onDoubleClick=(action "onDoubleClick") onContextMenu=(action "onContextMenu")}}
+				{{~yield item.content~}}
+			{{/app-gridlist/item}}
+		{{~/each~}}
+	{{/app-gridlist/area}}
+{{/app-gridlist/view}}

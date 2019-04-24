@@ -9,6 +9,8 @@ export default Helper.extend({
 	compute([name], { model }) {
 		return (event, ...params) => {
 
+			model = params.length ? params[0] : null;
+
 			params.forEach(param => {
 				if ( typeOf(param) === 'instance' ) {
 					model = param;

@@ -36,6 +36,7 @@ Router.map(function() {
 			this.route('editable');
 			this.route('frame');
 			this.route('gravatar');
+			this.route('gridlist');
 			this.route('initials');
 			this.route('image');
 			this.route('input');

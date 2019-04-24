@@ -1,3 +1,5 @@
 export default function intRange(b, e) {
-	return Array.apply(null, Array(e-b+1)).map( (_, n) => n + b);
+	let min = Math.min(b, e);
+	let max = Math.max(b, e);
+	return Array(max-min+1).fill().map( (_, n) => min + n );
 }

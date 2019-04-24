@@ -86,3 +86,53 @@ app-modal-front.custom {
 	margin:10% auto 0 auto;
 	background-color:white;
 }
+
+.area {
+	height:400px;
+	position:relative;
+}
+
+app-gridlist-item[kind='list'] {
+	line-height:80px;
+	padding:0 30px 0 30px;
+}
+
+app-gridlist-item[kind='list']:hover {
+	background-color:#f5f5f5;
+}
+
+app-gridlist-item[kind='list'].selected {
+	background-color:#d5ffcc;
+}
+
+app-gridlist-item[kind='list'] > .l {
+	float:left;
+	color:#333333;
+}
+
+app-gridlist-item[kind='list'] > .r {
+	float:right;
+	color:#cccccc;
+}
+
+app-gridlist-item[kind='grid'] {
+	padding:40px 30px 0 30px;
+}
+
+app-gridlist-item[kind='grid']:hover {
+	background-color:#f5f5f5;
+}
+
+app-gridlist-item[kind='grid'].selected {
+	background-color:#d5ffcc;
+}
+
+app-gridlist-item[kind='grid'] > .l {
+	color:#333333;
+	text-align:center;
+}
+
+app-gridlist-item[kind='grid'] > .r {
+	color:#cccccc;
+	text-align:center;
+}
