@@ -246,7 +246,7 @@ export default Component.extend(ResizeMixin, {
 			}
 
 			if (!e.metaKey && !e.altKey && !e.shiftKey) {
-				this.get('onClick')(e, item.model);
+				this.get('onClick')(item.model);
 			}
 
 		},
@@ -266,7 +266,7 @@ export default Component.extend(ResizeMixin, {
 			}
 
 			if (!e.metaKey && !e.altKey && !e.shiftKey) {
-				this.get('onDoubleClick')(e, item.model);
+				this.get('onDoubleClick')(item.model);
 			}
 
 		},
