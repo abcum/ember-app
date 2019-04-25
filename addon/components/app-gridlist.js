@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { A } from '@ember/array';
 import O from '@ember/object';
 import { computed } from '@ember/object';
-import { run, later, cancel } from '@ember/runloop';
+import { later, cancel } from '@ember/runloop';
 import ResizeMixin from '../mixins/resize';
 import range from '../utils/int-range';
 import layout from '../templates/components/app-gridlist';
@@ -14,6 +14,8 @@ export default Component.extend(ResizeMixin, {
 	layout,
 
 	total: 0,
+
+	delay: 100,
 
 	colWidth: 0,
 
@@ -52,7 +54,7 @@ export default Component.extend(ResizeMixin, {
 			'confs.e.w': this.get('estimated.w'),
 			'confs.e.h': this.get('estimated.h'),
 		});
-		this.setup();
+		this.setup(true);
 	},
 
 	didInsertElement() {
@@ -61,7 +63,7 @@ export default Component.extend(ResizeMixin, {
 			'confs.d.w': this.element.clientWidth,
 			'confs.d.h': this.element.clientHeight,
 		});
-		this.setup();
+		this.setup(true);
 	},
 
 	didResizeElement() {
@@ -70,10 +72,10 @@ export default Component.extend(ResizeMixin, {
 			'confs.d.w': this.element.clientWidth,
 			'confs.d.h': this.element.clientHeight,
 		});
-		this.setup();
+		this.setup(true);
 	},
 
-	setup() {
+	setup(force = false) {
 
 		// Total items
 		let colW = this.confs.i.w;
@@ -103,35 +105,31 @@ export default Component.extend(ResizeMixin, {
 		});
 
 		// Display the items
-		this.scroll();
+		this.scroll(force);
 
 	},
 
-	scroll() {
+	scroll(force = false) {
 
 		// Total items
 		let rowH = this.confs.i.h;
 
 		// Number of beginning item
-		let brw = 0;
-		brw = Math.floor( this.confs.s.t / rowH );
+		let brw = Math.floor( this.confs.s.t / rowH );
 
 		// Number of finishing item
-		let frw = 0;
-		frw = Math.floor( brw + ( this.rows - 1 ) ) + 1;
+		let frw = Math.floor( brw + ( this.rows - 1 ) ) + 1;
 
 		// Index of beginning item
-		let bix = 0;
-		bix = Math.min(this.confs.c, brw * this.cols);
-		this.bix = bix;
+		this.bix = Math.min(this.confs.c, brw * this.cols) || 0;
 
 		// Index of finishing item
-		let fix = 0;
-		fix = Math.min(this.confs.c, frw * this.cols);
-		this.fix = fix;
+		this.fix = Math.min(this.confs.c, frw * this.cols) || 0;
 
-		// Check if moved on
-		if (this.cix == this.bix) return;
+		// Check if we have scrolled
+		if (this.cix == this.bix && force === false) return;
+
+		// Set current start index
 		this.cix = this.bix;
 
 		// Difference of ids
@@ -163,33 +161,28 @@ export default Component.extend(ResizeMixin, {
 			let obj = this.items.objectAt(pos);
 			obj.setProperties({
 				index: i,
-				content: A(this.content).objectAt(i, true),
+				content: A(this.content).objectAt(i, false),
 			});
 		});
 
-		// Fetch and change placeholder content
-		run( () => this.change(bix, fix, sub, ids) );
-
-	},
-
-	change(bix, fix, sub, ids) {
-
+		// Cancel all remote fetches
 		cancel(this.timer);
 
+		// Fetch and change placeholder content
 		this.timer = later( () => {
 
-			if (this.bix !== bix) return;
+			if (!this.element) return;
 
 			ids.forEach(i => {
 				let pos = i % sub;
 				let obj = this.items.objectAt(pos);
 				obj.setProperties({
 					index: i,
-					content: A(this.content).objectAt(i, false),
+					content: A(this.content).objectAt(i, true),
 				});
 			});
 
-		}, 500);
+		}, this.delay);
 
 	},
 
