@@ -11683,14 +11683,14 @@ return Object.keys(t).map(function(t){return e.conveyObjectAt(t)})},conveyObject
 return t||this.createObjectAt(e)},returnObjectAt:function(e){var t=this.sparseObjectAt(e)
 return t.loaded?t:this.remoteObjectAt(e)},remoteObjectAt:function(e){var t=this.limit,n=Math.floor(e/t)*t
 return this.get("fetchTask").perform({start:n,limit:t}),this.sparseObjectAt(e)},prepareObectsAt:function(e){for(var t=e.start,n=e.limit,r=t;r<t+n;r++){this.sparseObjectAt(r).get("fetcher").perform()}},fulfillObjectsAt:function(e,t){for(var n=e.start,r=n;r<n+t.length;r++){var i=this.sparseObjectAt(r)
-i&&"function"==typeof i.resolve&&i.resolve(t[r-n])}},declineObjectsAt:function(e,t){for(var n=e.start,r=e.limit,i=n;i<n+r;i++){var o=this.sparseObjectAt(i)
-o&&"function"==typeof o.reject&&o.reject(t)}},fetchTask:(0,t.task)(regeneratorRuntime.mark(function e(t){var n,r,i
+i&&"function"==typeof i.resolve&&i.resolve(t.objectAt(r-n))}},declineObjectsAt:function(e,t){for(var n=e.start,r=e.limit,i=n;i<n+r;i++){var o=this.sparseObjectAt(i)
+o&&"function"==typeof o.reject&&o.reject(t)}},fetchTask:(0,t.task)(regeneratorRuntime.mark(function e(t){var n,r,i,o
 return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.prev=0,n=this.getRangeAt(t),r=n.get("fetchTask"),e.next=5,r.perform(this.ctx,this.fetch,this.query)
-case 5:i=e.sent,this.prepareObectsAt(t),this.fulfillObjectsAt(t,i.data),this.set("length",i.total),e.next=15
+case 5:i=e.sent,o=Ember.A(i.data),this.prepareObectsAt(t),this.fulfillObjectsAt(t,o),this.set("length",i.total),e.next=16
 break
-case 11:e.prev=11,e.t0=e.catch(0),this.prepareObectsAt(t),this.declineObjectsAt(t,e.t0)
-case 15:this.notifyPropertyChange("[]")
-case 16:case"end":return e.stop()}},e,this,[[0,11]])}))})
+case 12:e.prev=12,e.t0=e.catch(0),this.prepareObectsAt(t),this.declineObjectsAt(t,e.t0)
+case 16:this.notifyPropertyChange("[]")
+case 17:case"end":return e.stop()}},e,this,[[0,12]])}))})
 e.default=o}),define("@abcum/ember-app/classes/item",["exports","ember-concurrency"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var n=Ember.ObjectProxy.extend({loaded:!1,reject:null,resolve:null,content:null,reset:function(){this.get("fetcher").cancelAll(),this.setProperties({loaded:!1,content:null})},fetcher:(0,t.task)(regeneratorRuntime.mark(function e(){var t,n=this
