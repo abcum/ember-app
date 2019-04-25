@@ -1,5 +1,5 @@
 import EmberObject, { computed } from '@ember/object';
-import EmberArray from '@ember/array';
+import EmberArray, { A } from '@ember/array';
 import { task } from 'ember-concurrency';
 import CompareMap from '../utils/compare-map';
 import Range from './range';
@@ -144,7 +144,7 @@ export default EmberObject.extend(EmberArray, {
 		for (let i = start; i < (start + array.length); i++) {
 			let item = this.sparseObjectAt(i);
 			if (item && typeof item.resolve === 'function') {
-				item.resolve(array[i-start]);
+				item.resolve(array.objectAt(i-start));
 			}
 		}
 
@@ -177,9 +177,11 @@ export default EmberObject.extend(EmberArray, {
 				this.query,
 			);
 
+			let items = A(array.data);
+
 			this.prepareObectsAt(rng);
 
-			this.fulfillObjectsAt(rng, array.data);
+			this.fulfillObjectsAt(rng, items);
 
 			this.set('length', array.total);
 
