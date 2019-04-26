@@ -11,8 +11,8 @@ export default Helper.extend({
 		this.recompute();
 	}),
 
-	compute([ value = undefined ], { format = undefined }) {
-		return Moment().calendar(value, format);
+	compute([ value = undefined, reference = undefined ], { format = undefined }) {
+		return Moment(value).calendar(reference, format);
 	}
 
 });
