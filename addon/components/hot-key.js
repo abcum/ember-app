@@ -64,6 +64,10 @@ export default Component.extend({
 			return true;
 		}
 
+		e.stopPropagation();
+
+		e.preventDefault();
+
 		this.onPress();
 
 		return false;

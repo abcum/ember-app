@@ -26,6 +26,16 @@ Selects the document `<head>` as a DOM element.
 {{/-in-element}}
 ```
 
+## focus
+
+{{#docs-demo as |demo|}}
+	{{#demo.example name='docs-demo-helpers-dom-focus.hbs'}}
+		{{input id="search" placeholder="Focus on me by pressing cmd+f"}}
+		{{hot-key key="f" meta=true onPress=(focus "search")}}
+	{{/demo.example}}
+	{{demo.snippet 'docs-demo-helpers-dom-focus.hbs'}}
+{{/docs-demo}}
+
 ## get-element-by-class
 
 Selects the first element which matches the specified class.
