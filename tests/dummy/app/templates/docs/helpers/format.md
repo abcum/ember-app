@@ -11,15 +11,6 @@ The format helpers enable easy formatting of different units.
 	{{demo.snippet 'docs-demo-helpers-format-bytes.hbs'}}
 {{/docs-demo}}
 
-## country
-
-{{#docs-demo as |demo|}}
-	{{#demo.example name='docs-demo-helpers-format-country.hbs'}}
-		{{country "GBR"}}
-	{{/demo.example}}
-	{{demo.snippet 'docs-demo-helpers-format-country.hbs'}}
-{{/docs-demo}}
-
 ## convert
 
 {{#docs-demo as |demo|}}
@@ -27,6 +18,24 @@ The format helpers enable easy formatting of different units.
 		{{convert 1 from="GBP" to="EUR"}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-helpers-format-convert.hbs'}}
+{{/docs-demo}}
+
+## countize
+
+{{#docs-demo as |demo|}}
+	{{#demo.example name='docs-demo-helpers-format-countize.hbs'}}
+		From {{countize 1 "person" "people"}} to {{countize 3 "person" "people"}}
+	{{/demo.example}}
+	{{demo.snippet 'docs-demo-helpers-format-countize.hbs'}}
+{{/docs-demo}}
+
+## country
+
+{{#docs-demo as |demo|}}
+	{{#demo.example name='docs-demo-helpers-format-country.hbs'}}
+		{{country "GBR"}}
+	{{/demo.example}}
+	{{demo.snippet 'docs-demo-helpers-format-country.hbs'}}
 {{/docs-demo}}
 
 ## currency
