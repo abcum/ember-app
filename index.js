@@ -167,13 +167,6 @@ module.exports = {
 
 			this.app.import('node_modules/moment/moment.js');
 
-			if (this.opt.plugins.moment.locales) {
-				[].concat(this.opt.plugins.moment.locales).forEach( (l) => {
-					this.app.import('node_modules/moment/locale/'+l+'.js');
-					this.app.import('vendor/moment/locale/'+l+'.js');
-				});
-			}
-
 			this.app.import('vendor/moment/instance.js');
 			this.app.import('vendor/moment/weekdays.js');
 			this.app.import('vendor/moment/workdays.js');
@@ -182,6 +175,13 @@ module.exports = {
 			this.app.import('vendor/moment.js', {
 				exports: { moment: ['default'] }
 			});
+
+			if (this.opt.plugins.moment.locales) {
+				[].concat(this.opt.plugins.moment.locales).forEach( (l) => {
+					this.app.import('node_modules/moment/locale/'+l+'.js');
+					this.app.import('vendor/moment/locale/'+l+'.js');
+				});
+			}
 
 		}
 
