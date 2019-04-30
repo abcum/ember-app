@@ -24,6 +24,7 @@ export default Service.extend({
 		let date = new Date();
 
 		this.setProperties({
+			full: date,
 			year: date.getFullYear(),
 			month: date.getMonth(),
 			day: date.getDate(),
