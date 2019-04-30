@@ -37,6 +37,14 @@ export default Component.extend({
 
 	},
 
+	didInsertElement() {
+
+		this._super(...arguments);
+
+		this.style();
+
+	},
+
 	willDestroyElement() {
 
 		document.removeEventListener('keydown', this.didEscapeHandler);
@@ -47,9 +55,7 @@ export default Component.extend({
 
 	open() {
 
-		if ( this.get('disabled') ) return;
-
-		this.send('style');
+		this.style();
 
 		this.set('hidden', false);
 
@@ -59,9 +65,34 @@ export default Component.extend({
 
 	close() {
 
+		this.style();
+
 		this.set('hidden', true);
 
 		document.removeEventListener('keydown', this.didEscapeHandler);
+
+	},
+
+	style() {
+
+		let f = this.element.children[2];
+		let w = this.element.children[2].offsetWidth;
+		let h = this.element.children[2].offsetHeight;
+		let t = this.element.children[0].getBoundingClientRect().top - 5;
+		let l = this.element.children[0].getBoundingClientRect().left - 5;
+
+		let [ x, y ] = [ 0, -10 ];
+
+		while ( l+w > window.innerWidth-30 ) {
+			l--; x--;
+		}
+
+		while ( t+h > window.innerHeight-30 ) {
+			t--; y--;
+		}
+
+		f.style.top = `${y}px`;
+		f.style.left = `${x}px`;
 
 	},
 
@@ -109,29 +140,6 @@ export default Component.extend({
 
 		close() {
 			this.close();
-		},
-
-		style() {
-
-			let f = this.element.children[2];
-			let w = this.element.children[2].offsetWidth;
-			let h = this.element.children[2].offsetHeight;
-			let t = this.element.children[0].getBoundingClientRect().top - 5;
-			let l = this.element.children[0].getBoundingClientRect().left - 5;
-
-			let [ x, y ] = [ 0, -10 ];
-
-			while ( l+w > window.innerWidth-30 ) {
-				l--; x--;
-			}
-
-			while ( t+h > window.innerHeight-30 ) {
-				t--; y--;
-			}
-
-			f.style.top = `${y}px`;
-			f.style.left = `${x}px`;
-
 		},
 
 		select(option) {

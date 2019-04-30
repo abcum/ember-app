@@ -38,7 +38,9 @@ app-dropdown > app-dropdown-cover {
 }
 
 app-dropdown > app-dropdown-cover[hidden] {
-	display:none;
+	display:block;
+	visibility:hidden;
+	pointer-events:none;
 }
 
 app-dropdown > app-dropdown-front {
@@ -63,7 +65,9 @@ app-dropdown > app-dropdown-front {
 }
 
 app-dropdown > app-dropdown-front[hidden] {
-	display:none;
+	display:block;
+	visibility:hidden;
+	pointer-events:none;
 }
 
 app-dropdown > app-dropdown-front app-dropdown-option {
