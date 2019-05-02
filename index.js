@@ -90,7 +90,7 @@ module.exports = {
 		// Ensure correct file types are converted
 		this.app.options.fingerprint = this.app.options.fingerprint || {};
 		this.app.options.fingerprint.replaceExtensions = this.app.options.fingerprint.replaceExtensions || [];
-		this.app.options.fingerprint.replaceExtensions.push('html', 'css', 'js', 'webmanifest', 'xml');
+		this.app.options.fingerprint.replaceExtensions.push('html', 'css', 'js', 'json', 'xml');
 
 		// Ensure correct file types are fingerprinted
 		this.app.options.fingerprint = this.app.options.fingerprint || {};

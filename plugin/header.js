@@ -7,7 +7,7 @@ module.exports = (opt) => {
 	let style = opt.webapp.style;
 
 	return `
-	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="manifest" href="/manifest.json">
 
 	<meta name="msapplication-config" content="/browserconfig.xml">
 

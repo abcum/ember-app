@@ -101,7 +101,7 @@ module.exports = class Webapp extends Plugin {
 			]
 		});
 
-		fs.writeFileSync(path.join(this.outputPath, 'manifest.webmanifest'), manifest);
+		fs.writeFileSync(path.join(this.outputPath, 'manifest.json'), manifest);
 
 	}
 
