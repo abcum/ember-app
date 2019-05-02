@@ -95,7 +95,6 @@ module.exports = {
 		// Ensure correct file types are fingerprinted
 		this.app.options.fingerprint = this.app.options.fingerprint || {};
 		this.app.options.fingerprint.extensions = this.app.options.fingerprint.extensions || [];
-		this.app.options.fingerprint.extensions.push('xml', 'webmanifest');
 		this.app.options.fingerprint.extensions.push('js', 'css', 'eot', 'otf', 'ttf', 'woff', 'woff2');
 		this.app.options.fingerprint.extensions.push('gif', 'ico', 'jpg', 'jp2', 'png', 'svg', 'tiff', 'webp');
 
