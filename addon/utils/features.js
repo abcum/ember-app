@@ -1,6 +1,7 @@
 export default {
 	fastboot,
 	localStorage,
+	createElement,
 	serviceWorker,
 	windowLocation,
 	addEventListener,
