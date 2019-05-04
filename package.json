@@ -26,8 +26,8 @@
   "dependencies": {
     "autotrack": "^2.4.1",
     "chart.js": "^2.8.0",
-    "codemirror": "^5.45.0",
-    "electron": "^4.1.4",
+    "codemirror": "^5.46.0",
+    "electron": "^5.0.1",
     "electron-builder": "^20.39.0",
     "ember-cli-babel": "^7.1.2",
     "ember-cli-htmlbars": "^3.0.1",
@@ -35,10 +35,10 @@
     "html-minifier": "^4.0.0",
     "marked": "^0.6.2",
     "moment": "^2.24.0",
-    "sass": "^1.18.0",
-    "sharp": "^0.22.0",
+    "sass": "^1.20.1",
+    "sharp": "^0.22.1",
     "vis": "^4.21.0",
-    "xmlbuilder": "^12.0.0"
+    "xmlbuilder": "^12.0.1"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.6.3",
@@ -57,7 +57,7 @@
     "ember-cli-sri": "^2.1.1",
     "ember-cli-template-lint": "^1.0.0-beta.1",
     "ember-cli-uglify": "^2.1.0",
-    "ember-concurrency": "^0.9.0",
+    "ember-concurrency": "^0.10.0",
     "ember-disable-prototype-extensions": "^1.1.3",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.1.0",
