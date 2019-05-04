@@ -1,6 +1,5 @@
 import Service from '@ember/service';
-
-const FREQUENCY = 1000;
+import Poller from '../classes/poller';
 
 export default Service.extend({
 
@@ -17,18 +16,15 @@ export default Service.extend({
 
 		this._super(...arguments);
 
-		this.ticker = setInterval(
-			this.tick.bind(this),
-			FREQUENCY,
-		);
+		this.poller = new Poller(1000);
 
-		this.tick();
+		this.poller.start(this, this.tick);
 
 	},
 
 	willDestroy() {
 
-		clearInterval(this.ticker);
+		this.poller.clear();
 
 		this._super(...arguments);
 
