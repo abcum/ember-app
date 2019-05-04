@@ -59,6 +59,18 @@ export default Service.extend(Config, Evented, {
 
 	},
 
+	// If this service is going to be
+	// destroyed, then let's ensure that
+	// the checker timer is cancelled.
+
+	willDestroy() {
+
+		clearInterval(this.timer);
+
+		this._super(...arguments);
+
+	},
+
 	// Check determines if an update to
 	// the application is available by
 	// checking the service worker.

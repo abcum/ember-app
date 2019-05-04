@@ -1,8 +1,10 @@
 import Service from '@ember/service';
-import { later } from '@ember/runloop';
+
+const FREQUENCY = 1000;
 
 export default Service.extend({
 
+	ticker: null,
 	year: null,
 	month: null,
 	day: null,
@@ -15,13 +17,26 @@ export default Service.extend({
 
 		this._super(...arguments);
 
+		this.ticker = setInterval(
+			this.tick.bind(this),
+			FREQUENCY,
+		);
+
 		this.tick();
+
+	},
+
+	willDestroy() {
+
+		clearInterval(this.ticker);
+
+		this._super(...arguments);
 
 	},
 
 	tick() {
 
-		let date = new Date();
+		const date = new Date();
 
 		this.setProperties({
 			full: date,
@@ -33,8 +48,6 @@ export default Service.extend({
 			second: date.getSeconds(),
 			quart: Math.ceil( date.getSeconds() / 15 ),
 		});
-
-		later(this, this.tick, 1000);
 
 	},
 

@@ -45,6 +45,22 @@ export default Service.extend(Config, Evented, {
 
 	},
 
+	// If this service is going to be
+	// destroyed, then let's ensure that
+	// the checker timer is cancelled.
+
+	willDestroy() {
+
+		clearInterval(this.timer);
+
+		this._super(...arguments);
+
+	},
+
+	// Setup setups up the event listener
+	// for when an update is found on the
+	// remote versioning service.
+
 	setup() {
 
 		if (Electron === null) return;
