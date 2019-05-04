@@ -53,7 +53,7 @@ export default Service.extend(Config, Evented, {
 
 	willDestroy() {
 
-		clearInterval(this.timer);
+		if (this.timer) clearInterval(this.timer);
 
 		this._super(...arguments);
 
