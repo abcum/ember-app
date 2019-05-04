@@ -10,7 +10,7 @@ export default Metric.extend({
 
 	init() {
 
-		if (features.createElement === false) return;
+		if (features.createElement() === false) return;
 
 		assert(`You must pass a valid 'id' to the ${this.toString()} adapter`, this.config.id);
 
@@ -30,7 +30,7 @@ export default Metric.extend({
 
 	willDestroy() {
 
-		if (features.createElement === false) return;
+		if (features.createElement() === false) return;
 
 		document.querySelectorAll(src).forEach(e => {
 			e.parentElement.removeChild(e);
@@ -43,7 +43,7 @@ export default Metric.extend({
 
 	clear() {
 
-		if (features.createElement === false) return;
+		if (features.createElement() === false) return;
 
 		window.fbq('init', this.config.id, { uid: null });
 
@@ -53,7 +53,7 @@ export default Metric.extend({
 
 		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
-		if (features.createElement === false) return;
+		if (features.createElement() === false) return;
 
 		window.fbq('init', this.config.id, { uid: id });
 
@@ -63,7 +63,7 @@ export default Metric.extend({
 
 	trackPage(data) {
 
-		if (features.createElement === false) return;
+		if (features.createElement() === false) return;
 
 		window.fbq('track', 'PageView', data);
 
@@ -73,7 +73,7 @@ export default Metric.extend({
 
 		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 
-		if (features.createElement === false) return;
+		if (features.createElement() === false) return;
 
 		window.fbq('track', name, data);
 
