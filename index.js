@@ -287,14 +287,15 @@ module.exports = {
 
 	contentFor(type) {
 
+		let conf = this.project.config(process.env.EMBER_ENV);
+
 		if (type === 'head') {
-			return Header(this.opt);
+			return Header(conf, this.opt);
 		}
 
 		if (process.env.EMBER_CLI_ELECTRON) {
-			let rootURL = this.project.config(process.env.EMBER_ENV).rootURL;
 			if (type === 'head-footer') {
-				return `<script src="${rootURL}assets/electron.js"></script>`;
+				return `<script src="${conf.rootURL}assets/electron.js"></script>`;
 			}
 		}
 
