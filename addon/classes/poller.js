@@ -24,4 +24,4 @@ export default class Poller extends Object {
 		}, this.interval);
 	}
 
-};
+}
