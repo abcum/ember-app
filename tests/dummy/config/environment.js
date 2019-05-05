@@ -88,7 +88,7 @@ module.exports = function(environment) {
 	}
 
 	if (environment === 'production') {
-		ENV.rootURL = '/ember-app/';
+		ENV.rootURL = 'ADDON_DOCS_ROOT_URL';
 	}
 
 	return ENV;
