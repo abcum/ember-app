@@ -17,11 +17,13 @@ const IMAGES = [
 
 module.exports = class Images extends Plugin {
 
-	constructor(inputNodes, options) {
+	constructor(inputNodes, config, options) {
 
 		super(inputNodes, {
 			name: 'Images',
 		});
+
+		this.conf = config;
 
 		this.opts = options;
 

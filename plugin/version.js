@@ -6,11 +6,13 @@ const path = require('path');
 
 module.exports = class Version extends Plugin {
 
-	constructor(inputNodes, options) {
+	constructor(inputNodes, config, options) {
 
 		super(inputNodes, {
 			name: 'Version',
 		});
+
+		this.conf = config;
 
 		this.opts = options;
 

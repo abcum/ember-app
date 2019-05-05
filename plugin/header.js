@@ -2,11 +2,10 @@
 
 module.exports = (config, options) => {
 
+	let name = options.name;
+	let color = options.color;
+	let style = options.style;
 	let rootURL = config.rootURL;
-
-	let color = options.webapp.color;
-	let title = options.webapp.title;
-	let style = options.webapp.style;
 
 	return `
 	<link rel="manifest" href="${rootURL}manifest.json">
@@ -16,7 +15,7 @@ module.exports = (config, options) => {
 	<meta name="theme-color" content="${color}">
 	<meta name="msapplication-TileColor" content="${color}">
 
-	<meta name="apple-mobile-web-app-title" content="${title}">
+	<meta name="apple-mobile-web-app-title" content="${name}">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="${style}">
 

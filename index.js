@@ -98,6 +98,9 @@ module.exports = {
 		this.app.options.fingerprint.extensions.push('js', 'css', 'eot', 'otf', 'ttf', 'woff', 'woff2');
 		this.app.options.fingerprint.extensions.push('gif', 'ico', 'jpg', 'jp2', 'png', 'svg', 'tiff', 'webp');
 
+		// Get the app configuration options
+		this.cfg = this.project.config(process.env.EMBER_ENV);
+
 		// Get the ember-app configuration options
 		this.opt = this.project.config(process.env.EMBER_ENV)['ember-app'] || {};
 
@@ -252,19 +255,19 @@ module.exports = {
 		let p = this.treeFor('public');
 
 		// Minify the index.html file
-		let h = new Minify(tree, this.opt.minify);
+		let h = new Minify(tree, this.cfg, this.opt.minify);
 
 		// Generate the webapp files
-		let a = new Webapp([tree], this.opt.webapp);
+		let a = new Webapp([tree], this.cfg, this.opt.webapp);
 
 		// Compress all web images
-		let i = new Images([tree], this.opt.images);
+		let i = new Images([tree], this.cfg, this.opt.images);
 
 		// Create the version.txt file
-		let v = new Version([tree], this.opt.version);
+		let v = new Version([tree], this.cfg, this.opt.version);
 
 		// Create the service worker file
-		let w = new Worker([tree], this.opt.worker);
+		let w = new Worker([tree], this.cfg, this.opt.worker);
 
 		w = new Rollup(new Tree([p, w]), {
 			rollup: {
@@ -287,15 +290,13 @@ module.exports = {
 
 	contentFor(type) {
 
-		let conf = this.project.config(process.env.EMBER_ENV);
-
 		if (type === 'head') {
-			return Header(conf, this.opt);
+			return Header(this.cfg, this.opt.webapp);
 		}
 
 		if (process.env.EMBER_CLI_ELECTRON) {
 			if (type === 'head-footer') {
-				return `<script src="${conf.rootURL}assets/electron.js"></script>`;
+				return `<script src="${this.cfg.rootURL}assets/electron.js"></script>`;
 			}
 		}
 

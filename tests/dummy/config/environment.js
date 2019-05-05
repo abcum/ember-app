@@ -16,6 +16,18 @@ module.exports = function(environment) {
 			version: {
 				enabled: false,
 			},
+			webapp: {
+				background: '#ffffff',
+				color: '#e04e39',
+				description: '',
+				display: 'standalone',
+				name: 'Ember App',
+				orientation: 'portrait',
+				scope: '/ember-app/',
+				short: 'ember-app',
+				start: '/ember-app/',
+				style: 'default',
+			},
 			metrics: [{
 				name: 'google-analytics',
 				environments: ['production'],

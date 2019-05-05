@@ -9,17 +9,21 @@ const fs = require('fs');
 
 module.exports = class Webapp extends Plugin {
 
-	constructor(inputNodes, options) {
+	constructor(inputNodes, config, options) {
 
 		super(inputNodes, {
 			name: 'Webapp',
 		});
+
+		this.conf = config;
 
 		this.opts = options;
 
 	}
 
 	async build() {
+
+		let rootURL = this.conf.rootURL;
 
 		// Resize the base icon image into
 		// a smaller favicon image for use
@@ -67,10 +71,10 @@ module.exports = class Webapp extends Plugin {
 			browserconfig: {
 				msapplication: {
 					tile: {
-						square70x70logo: { '@src': '/static/webapp/tile-70x70.png' },
-						square144x144logo: { '@src': '/static/webapp/tile-144x144.png' },
-						square150x150logo: { '@src': '/static/webapp/tile-150x150.png' },
-						square310x310logo: { '@src': '/static/webapp/tile-310x310.png' },
+						square70x70logo: { '@src': `${rootURL}static/webapp/tile-70x70.png` },
+						square144x144logo: { '@src': `${rootURL}static/webapp/tile-144x144.png` },
+						square150x150logo: { '@src': `${rootURL}static/webapp/tile-150x150.png` },
+						square310x310logo: { '@src': `${rootURL}static/webapp/tile-310x310.png` },
 						TileColor: { '#text': this.opts.color },
 					},
 				},
@@ -94,10 +98,10 @@ module.exports = class Webapp extends Plugin {
 			start_url: this.opts.start,
 			theme_color: this.opts.color,
 			icons: [
-				{ src: '/static/webapp/icon-16x16.png', sizes: '16x16' },
-				{ src: '/static/webapp/icon-32x32.png', sizes: '32x32' },
-				{ src: '/static/webapp/icon-192x192.png', sizes: '192x192' },
-				{ src: '/static/webapp/icon-512x512.png', sizes: '512x512' },
+				{ src: `${rootURL}static/webapp/icon-16x16.png`, sizes: '16x16' },
+				{ src: `${rootURL}static/webapp/icon-32x32.png`, sizes: '32x32' },
+				{ src: `${rootURL}static/webapp/icon-192x192.png`, sizes: '192x192' },
+				{ src: `${rootURL}static/webapp/icon-512x512.png`, sizes: '512x512' },
 			]
 		});
 

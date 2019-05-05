@@ -7,11 +7,13 @@ const fs = require('fs');
 
 module.exports = class Worker extends Plugin {
 
-	constructor(inputNodes, options) {
+	constructor(inputNodes, config, options) {
 
 		super(inputNodes, {
 			name: 'Worker',
 		});
+
+		this.conf = config;
 
 		this.opts = options;
 
