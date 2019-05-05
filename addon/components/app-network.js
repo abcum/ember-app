@@ -1,15 +1,21 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import StylesMixin from '../mixins/styles';
 import layout from '../templates/components/app-network';
 import vis from 'vis.js';
 
-export default Component.extend({
+export default Component.extend(StylesMixin, {
 
 	layout,
 
 	width: '100%',
 
 	height: '100%',
+
+	styleBindings: Object.freeze([
+		'width',
+		'height',
+	]),
 
 	nodes: computed(function() {
 		return new vis.DataSet([]);
@@ -26,11 +32,6 @@ export default Component.extend({
 	didInsertElement() {
 
 		this._super(...arguments);
-
-		this.$().css({
-			width: this.get('width'),
-			height: this.get('height'),
-		});
 
 		this.network = new vis.Network(this.element, {
 			nodes: this.get('nodes'),

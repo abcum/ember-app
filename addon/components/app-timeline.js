@@ -1,15 +1,21 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import StylesMixin from '../mixins/styles';
 import layout from '../templates/components/app-timeline';
 import vis from 'vis.js';
 
-export default Component.extend({
+export default Component.extend(StylesMixin, {
 
 	layout,
 
 	width: '100%',
 
 	height: '100%',
+
+	styleBindings: Object.freeze([
+		'width',
+		'height',
+	]),
 
 	items: computed(function() {
 		return new vis.DataSet([]);
@@ -22,11 +28,6 @@ export default Component.extend({
 	didInsertElement() {
 
 		this._super(...arguments);
-
-		this.$().css({
-			width: this.get('width'),
-			height: this.get('height'),
-		});
 
 		this.timeline = new vis.Timeline(this.element, this.get('items'), this.get('options'));
 
