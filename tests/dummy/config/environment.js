@@ -76,7 +76,7 @@ module.exports = function(environment) {
 	}
 
 	if (environment === 'production') {
-		ENV.rootURL = '/ember-app';
+		ENV.rootURL = '/ember-app/';
 	}
 
 	return ENV;
