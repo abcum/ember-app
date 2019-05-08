@@ -117,7 +117,7 @@ export default Component.extend({
 		});
 
 		label = label.map(option => {
-			return option.get('label') ? option.get('label') : option.innerHTML;
+			return option.get('label') ? option.get('label') : option.element.innerHTML;
 		});
 
 		return label.join(', ') || this.get('default');
