@@ -39,7 +39,8 @@ export function localStorage() {
 export function createElement() {
 	try {
 		if (!window) throw "exception";
-		if (!window.createElement) throw "exception";
+		if (!document) throw "exception";
+		if (!document.createElement) throw "exception";
 		return true;
 	} catch (e) {
 		return false;
