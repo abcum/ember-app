@@ -1,10 +1,10 @@
-// BEGIN-SNIPPET docs-demo-elements-chart-normal.js
+// BEGIN-SNIPPET docs-demo-elements-chart-circle.js
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 
 export default Controller.extend({
 
-	normal: computed(function() {
+	circle: computed(function() {
 		return {
 			data: {
 				labels: ["Red","Blue","Yellow","Green","Purple","Orange"],
@@ -32,17 +32,10 @@ export default Controller.extend({
 			opts: {
 				legend: {
 					display: true,
-					position: 'bottom',
+					position: 'right',
 					labels: {
 						fontColor: "rgb(120, 120, 120)",
 					}
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true,
-						}
-					}]
 				},
 			}
 		};

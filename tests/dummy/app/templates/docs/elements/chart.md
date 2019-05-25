@@ -28,37 +28,39 @@ The `app-chart` component enables adding [Chart.js](https://www.chartjs.org/) ch
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-chart-pie.hbs'}}
-		{{app-chart type="pie" data=normal.data options=normal.opts}}
+		{{app-chart type="pie" data=circle.data options=circle.opts}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-chart-pie.hbs'}}
-	{{demo.snippet 'docs-demo-elements-chart-normal.js'}}
+	{{demo.snippet 'docs-demo-elements-chart-circle.js'}}
 {{/docs-demo}}
 
 ## Doughnut charts
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-chart-doughnut.hbs'}}
-		{{app-chart type="doughnut" data=normal.data options=normal.opts}}
+		{{app-chart type="doughnut" data=circle.data options=circle.opts}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-chart-doughnut.hbs'}}
-	{{demo.snippet 'docs-demo-elements-chart-normal.js'}}
+	{{demo.snippet 'docs-demo-elements-chart-circle.js'}}
 {{/docs-demo}}
 
 ## Polar charts
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-chart-polar.hbs'}}
-		{{app-chart type="polarArea" data=normal.data options=normal.opts}}
+		{{app-chart type="polarArea" data=circle.data options=circle.opts}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-chart-polar.hbs'}}
-	{{demo.snippet 'docs-demo-elements-chart-normal.js'}}
+	{{demo.snippet 'docs-demo-elements-chart-circle.js'}}
 {{/docs-demo}}
 
 ## Bubble charts
 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-chart-bubble.hbs'}}
-		{{app-chart type="bubble" data=bubble.data options=bubble.opts}}
+		<div style="height:600px;">
+			{{app-chart type="bubble" data=bubble.data options=bubble.opts}}
+		</div>
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-chart-bubble.hbs'}}
 	{{demo.snippet 'docs-demo-elements-chart-bubble.js'}}
