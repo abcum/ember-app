@@ -9,7 +9,7 @@ export default EmberObject.extend({
 
 	fetchTask: task(function* (ctx, fetch, props) {
 
-		yield timeout(100);
+		yield timeout(500);
 
 		let query = ctx.getProperties(...props);
 
