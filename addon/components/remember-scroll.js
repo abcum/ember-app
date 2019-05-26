@@ -8,12 +8,12 @@ export default Component.extend({
 		this._super(...arguments);
 		let key = this.get('key');
 		let pos = scrolls[key] || 0;
-		document.scrollTop = pos;
+		window.scrollTo(0, pos);
 	},
 
 	willDestroyElement() {
 		let key = this.get('key');
-		let pos = document.scrollTop;
+		let pos = window.scrollY;
 		scrolls[key] = pos;
 		this._super(...arguments);
 	},
