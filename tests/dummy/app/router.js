@@ -46,6 +46,7 @@ Router.map(function() {
 			this.route('select');
 			this.route('social');
 			this.route('tag');
+			this.route('tooltip');
 		});
 
 		this.route('helpers', function() {

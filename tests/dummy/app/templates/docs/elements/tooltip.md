@@ -1,6 +1,6 @@
-# Popup
+# Tooltip
 
-The `app-popup` component enables adding popups inline or attached to html elements. Popup elements can be made to appear either when hovering over an item, or when clicking on an item. Popup are able to be hidden when the item is no longer being hovered over, or when the user clicks on another part of the page. In addition pressing the escape key can hide a popup.
+The `app-tooltip` component enables adding tooltips inline or attached to html elements. Tooltip elements can be made to appear either when hovering over an item, or when clicking on an item. Tooltips are able to be hidden when the item is no longer being hovered over, or when the user clicks on another part of the page. In addition pressing the escape key can hide a tooltip.
 
 ## When hovering
 
@@ -8,9 +8,9 @@ The `app-popup` component enables adding popups inline or attached to html eleme
 	{{#demo.example name='docs-demo-popup-hover.hbs'}}
 		<span>
 			Hover over me!
-			{{#app-popup side="ne" show="hover" hide="hover"}}
+			{{#app-tooltip side="ne" show="hover" hide="hover"}}
 				Here is some more information.
-			{{/app-popup}}
+			{{/app-tooltip}}
 		</span>
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-popup-hover.hbs'}}
@@ -22,9 +22,9 @@ The `app-popup` component enables adding popups inline or attached to html eleme
 	{{#demo.example name='docs-demo-popup-click.hbs'}}
 		<span>
 			Click on me!
-			{{#app-popup side="ne" show="click" hide="click"}}
+			{{#app-tooltip side="ne" show="click" hide="click"}}
 				Here is some more information.
-			{{/app-popup}}
+			{{/app-tooltip}}
 		</span>
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-popup-click.hbs'}}
@@ -36,9 +36,9 @@ The `app-popup` component enables adding popups inline or attached to html eleme
 	{{#demo.example name='docs-demo-popup-escape.hbs'}}
 		<span>
 			Click on me!
-			{{#app-popup side="ne" show="click" hide="click escape"}}
+			{{#app-tooltip side="ne" show="click" hide="click escape"}}
 				Here is some more information.
-			{{/app-popup}}
+			{{/app-tooltip}}
 		</span>
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-popup-escape.hbs'}}
@@ -50,9 +50,9 @@ The `app-popup` component enables adding popups inline or attached to html eleme
 	{{#demo.example name='docs-demo-popup-class.hbs'}}
 		<span>
 			Hover over me!
-			{{#app-popup side="ne" show="hover" hide="hover" itemClass="custom"}}
+			{{#app-tooltip side="ne" show="hover" hide="hover" itemClass="custom"}}
 				Here is some more information.
-			{{/app-popup}}
+			{{/app-tooltip}}
 		</span>
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-popup-class.hbs'}}
@@ -63,9 +63,9 @@ The `app-popup` component enables adding popups inline or attached to html eleme
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-popup-target.hbs'}}
 		<span id="clicker">Hover over me</span>
-		{{#app-popup side="ne" show="hover" hide="hover" target="clicker"}}
+		{{#app-tooltip side="ne" show="hover" hide="hover" target="clicker"}}
 			Here is some more information.
-		{{/app-popup}}
+		{{/app-tooltip}}
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-popup-target.hbs'}}
 {{/docs-demo}}
@@ -91,9 +91,9 @@ The `app-popup` component enables adding popups inline or attached to html eleme
 
 		<span>
 			Hover over me!
-			{{#app-popup side=side show="hover" hide="hover escape"}}
+			{{#app-tooltip side=side show="hover" hide="hover escape"}}
 				Here is some more information.
-			{{/app-popup}}
+			{{/app-tooltip}}
 		</span>
 
 	{{/demo.example}}
