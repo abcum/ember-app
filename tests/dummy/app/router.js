@@ -31,6 +31,7 @@ Router.map(function() {
 			this.route('chart');
 			this.route('codemirror');
 			this.route('contextmenu');
+			this.route('document');
 			this.route('dropdown');
 			this.route('droppable');
 			this.route('editable');

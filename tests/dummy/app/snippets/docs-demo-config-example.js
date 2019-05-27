@@ -96,6 +96,7 @@ module.exports = function(environment) {
 			plugins: {
 				chart: true, // Enable chart.js library
 				marked: true, // Enable marked.js library
+				pdf: true, // Enable pdf.js library
 				vis: true, // Enable vis.js library
 				moment: { // Enable moment.js library
 					locales: ['en-gb'],

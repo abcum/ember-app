@@ -155,6 +155,16 @@ module.exports = {
 			});
 		}
 
+		// Include `pdf.js` library
+		if (this.opt.plugins && this.opt.plugins.pdf) {
+			this.app.import('node_modules/pdfjs-dist/build/pdf.min.js', {
+				outputFile: 'assets/pdf.js'
+			});
+			this.app.import('node_modules/pdfjs-dist/build/pdf.worker.min.js', {
+				outputFile: 'assets/pdf-worker.js'
+			});
+		}
+
 		// Include `vis.js` library
 		if (this.opt.plugins && this.opt.plugins.vis) {
 			this.app.import('node_modules/vis/dist/vis.js', fastboot);

@@ -1,0 +1,22 @@
+{{app-document/viewer
+	alt=alt
+	doc=doc
+	page=page
+	width=width
+	height=height
+	spacing=spacing
+}}
+
+<app-document-thumbs>
+	{{#each (range 1 (add 1 doc.numPages)) as |step|}}
+		{{app-document/thumb
+			alt=alt
+			doc=doc
+			step=step
+			page=page
+			width=width
+			height=height
+			select=(queue (action (mut page) ) (action "select") )
+		}}
+	{{/each}}
+</app-document-thumbs>
