@@ -1,0 +1,12 @@
+// BEGIN-SNIPPET docs-demo-styling.scss
+:root {
+	/* Used for text on the page */
+	--text-color:#000000;
+	/* Used for links on the page */
+	--link-color:#00BFFF;
+	/* Used when hovering over clickable elements */
+	--hover-color:#FF0000;
+	/* Used for accent colours (backgrounds when hovering) */
+	--accent-color:#187AEE;
+}
+// END-SNIPPET

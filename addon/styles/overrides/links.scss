@@ -1,0 +1,21 @@
+a {
+
+	cursor:pointer;
+	text-decoration:none;
+	color:var(--link-color);
+
+	i {
+		cursor:pointer;
+	}
+
+	span {
+		cursor:pointer;
+	}
+
+	&:hover {
+		cursor:pointer;
+		text-decoration:none;
+		color:var(--hover-color);
+	}
+
+}

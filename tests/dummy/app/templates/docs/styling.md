@@ -1,6 +1,12 @@
 # Styling
 
-Import the library into your app stylesheet.
+Define the necessary variables in your app stylesheet.
+
+{{docs-snippet name='docs-demo-styling.scss' language='css'}}
+
+## Mixins
+
+To use the SASS mixins and helper functions, import the library into your app stylesheet.
 
 {{docs-snippet name='docs-demo-install.scss'}}
 

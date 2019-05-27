@@ -53,12 +53,12 @@ To enable a multi-select dropdown menu, set the `multiple` attribute to `true`, 
 			{{dropdown.option label="No permissions"}}
 			{{#dropdown.group label="Reading"}}
 				{{dropdown.option value="view" label="Can view posts"}}
-				{{dropdown.option value="comment" label="Can view and comment on posts"}}
+				{{dropdown.option value="comment" label="Can comment on posts"}}
 			{{/dropdown.group}}
 			{{#dropdown.group label="Writing"}}
 				{{dropdown.option value="write" label="Can write posts"}}
-				{{dropdown.option value="alter" label="Can write and alter other's posts"}}
-				{{dropdown.option value="full" label="Can write, alter, and delete posts"}}
+				{{dropdown.option value="alter" label="Can alter posts"}}
+				{{dropdown.option value="full" label="Can delete posts"}}
 			{{/dropdown.group}}
 		{{/app-dropdown}}
 	{{/demo.example}}
