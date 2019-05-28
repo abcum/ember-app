@@ -76,7 +76,7 @@ app-dropdown > app-dropdown-front {
 	max-height:500px;
 	border-radius:5px;
 	padding:4px 0 4px 0;
-	border:1px solid #000000;
+	border:1px solid #cccccc;
 	background:rgba(255, 255, 255, 0.95);
 
 	-webkit-backdrop-filter:blur(40px);
@@ -100,7 +100,7 @@ app-dropdown > app-dropdown-front {
 	}
 
 	body[macos-theme='light'] & {
-		border:1px solid #000000;
+		border:1px solid #cccccc;
 		background:rgba(255, 255, 255, 0.95);
 	}
 
@@ -110,7 +110,7 @@ app-dropdown > app-dropdown-front {
 	}
 
 	@media (prefers-color-scheme: light) {
-		border:1px solid #000000;
+		border:1px solid #cccccc;
 		background:rgba(255, 255, 255, 0.95);
 	}
 
