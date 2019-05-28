@@ -1,8 +1,11 @@
 /* globals pdfjsLib */
 import Service from '@ember/service';
+import { inject } from '@ember/service';
 import { Promise, resolve } from 'rsvp';
 
 export default Service.extend({
+
+	rooturl: inject(),
 
 	loaded: false,
 
@@ -14,7 +17,7 @@ export default Service.extend({
 			let script = document.createElement("script");
 			script.onload = resolve;
 			script.onerror = reject;
-			script.src = '/assets/pdf.js';
+			script.src = this.rooturl.build('/assets/pdf.js');
 			document.head.appendChild(script);
 			this.loaded = true;
 		});
@@ -24,7 +27,7 @@ export default Service.extend({
 	open(url) {
 
 		return this.load().then( () => {
-			pdfjsLib.GlobalWorkerOptions.workerSrc = '/assets/pdf-worker.js';
+			pdfjsLib.GlobalWorkerOptions.workerSrc = this.rooturl.build('/assets/pdf-worker.js');
 			return pdfjsLib.getDocument(url);
 		});
 
