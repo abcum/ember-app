@@ -7,7 +7,7 @@ The `app-document` component adds functionlity for loading, rendering and deplay
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-elements-document.hbs'}}
 		<div style="height:800px; position:relative;">
-			{{app-document page=1 url=(route-url "/test.pdf")}}
+			{{app-document page=1 url=(root-url "/test.pdf")}}
 		</div>
 	{{/demo.example}}
 	{{demo.snippet 'docs-demo-elements-document.hbs'}}
