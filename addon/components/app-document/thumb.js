@@ -37,7 +37,7 @@ export default Component.extend({
 
 			page = yield doc.getPage(num);
 
-			let viewport = page.getViewport(1);
+			let viewport = page.getViewport({ scale: 1 });
 			let canvas = this.element.querySelectorAll('canvas')[0];
 			let context = canvas.getContext('2d');
 

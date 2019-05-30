@@ -31,12 +31,12 @@ export default Component.extend({
 
 			page = yield doc.getPage(num);
 
-			let vp = page.getViewport(1);
+			let vp = page.getViewport({ scale: 1 });
 			let ww = this.element.offsetWidth - this.spacing;
 			let wh = this.element.offsetHeight - this.spacing;
 			let scale = Math.min(ww/vp.width, wh/vp.height);
 
-			let viewport = page.getViewport(scale);
+			let viewport = page.getViewport({ scale });
 			let canvas = this.element.querySelectorAll('canvas')[0];
 			let context = canvas.getContext('2d');
 

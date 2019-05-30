@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import ResizeMixin from "../mixins/resize";
 import { inject } from '@ember/service';
+import { computed } from '@ember/object';
 import { task, timeout } from 'ember-concurrency';
 import layout from '../templates/components/app-document';
 
@@ -60,6 +61,14 @@ export default Component.extend(ResizeMixin, {
 		}
 
 	},
+
+	pages: computed('doc.numPages', function() {
+
+		let n = this.doc ? this.doc.numPages : 0;
+
+		return new Array(n).fill().map( (v, k) => k+1);
+
+	}),
 
 	renderDoc: task(function * (url) {
 

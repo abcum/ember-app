@@ -8,7 +8,7 @@
 }}
 
 <app-document-thumbs>
-	{{#each (range 1 (add 1 doc.numPages)) as |step|}}
+	{{#each pages as |step|}}
 		{{app-document/thumb
 			alt=alt
 			doc=doc
