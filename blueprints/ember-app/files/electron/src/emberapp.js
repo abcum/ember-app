@@ -9,9 +9,9 @@ module.exports = function() {
 	const BASE = join(FOLD, '..', 'dist');
 	const INDX = join(BASE, 'index.html');
 
-	proto.registerStandardSchemes(['ember'], {
-		secure: true,
-	});
+	proto.registerSchemesAsPrivileged([
+		{ scheme: 'ember', privileges: { standard: true, secure: true } },
+	]);
 
 	app.once('ready', () => {
 
