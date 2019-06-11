@@ -55,8 +55,11 @@ export default Component.extend(ResizeMixin, {
 			this.xhr.destroy();
 		}
 
-		if (this.doc && this.doc.destroy) {
+		if (this.doc && this.doc.cleanup) {
 			this.doc.cleanup();
+		}
+
+		if (this.doc && this.doc.destroy) {
 			this.doc.destroy();
 		}
 
