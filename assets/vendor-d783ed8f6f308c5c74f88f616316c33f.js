@@ -11781,7 +11781,8 @@ for(;r+t>window.innerHeight-30;)r--
 this.element.style.top="".concat(r,"px"),this.element.style.left="".concat(n,"px")}})
 e.default=r}),define("@abcum/ember-app/components/app-document",["exports","@abcum/ember-app/mixins/resize","ember-concurrency","@abcum/ember-app/templates/components/app-document"],function(e,t,n,r){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-var i=Ember.Component.extend(t.default,{tagName:"app-document",layout:r.default,spacing:75,pdfjs:Ember.inject.service(),didInsertElement:function(){this._super.apply(this,arguments),this.set("width",this.element.offsetWidth),this.set("height",this.element.offsetHeight)},didResizeElement:function(){this._super.apply(this,arguments),this.set("width",this.element.offsetWidth),this.set("height",this.element.offsetHeight)},didReceiveAttrs:function(){this._super.apply(this,arguments),this.get("renderDoc").perform(this.url)},willDestroyElement:function(){this.cleanup(),this._super.apply(this,arguments)},cleanup:function(){this.xhr&&this.xhr.destroy&&this.xhr.destroy(),this.doc&&this.doc.destroy&&(this.doc.cleanup(),this.doc.destroy())},renderDoc:(0,n.task)(regeneratorRuntime.mark(function e(t){return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.prev=0,this.cleanup(),e.next=4,(0,n.timeout)(100)
+var i=Ember.Component.extend(t.default,{tagName:"app-document",layout:r.default,spacing:75,pdfjs:Ember.inject.service(),didInsertElement:function(){this._super.apply(this,arguments),this.set("width",this.element.offsetWidth),this.set("height",this.element.offsetHeight)},didResizeElement:function(){this._super.apply(this,arguments),this.set("width",this.element.offsetWidth),this.set("height",this.element.offsetHeight)},didReceiveAttrs:function(){this._super.apply(this,arguments),this.get("renderDoc").perform(this.url)},willDestroyElement:function(){this.cleanup(),this._super.apply(this,arguments)},cleanup:function(){this.xhr&&this.xhr.destroy&&this.xhr.destroy(),this.doc&&this.doc.cleanup&&this.doc.cleanup(),this.doc&&this.doc.destroy&&this.doc.destroy()},pages:Ember.computed("doc.numPages",function(){var e=this.doc?this.doc.numPages:0
+return new Array(e).fill().map(function(e,t){return t+1})}),renderDoc:(0,n.task)(regeneratorRuntime.mark(function e(t){return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.prev=0,this.cleanup(),e.next=4,(0,n.timeout)(100)
 case 4:return this.xhr=this.get("pdfjs").open(t),e.next=7,this.xhr
 case 7:this.doc=e.sent,this.notifyPropertyChange("doc")
 case 9:return e.prev=9,this.xhr&&this.xhr.destroy&&this.xhr.destroy(),e.finish(9)
@@ -11793,7 +11794,7 @@ return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:i
 break}return e.abrupt("return")
 case 2:return e.next=4,(0,t.timeout)(100)
 case 4:return e.prev=4,e.next=7,n.getPage(r)
-case 7:return i=e.sent,s=i.getViewport(1),a=this.element.querySelectorAll("canvas")[0],l=a.getContext("2d"),a.width=s.width,a.height=s.height,e.next=15,i.render({canvasContext:l,viewport:s})
+case 7:return i=e.sent,s=i.getViewport({scale:1}),a=this.element.querySelectorAll("canvas")[0],l=a.getContext("2d"),a.width=s.width,a.height=s.height,e.next=15,i.render({canvasContext:l,viewport:s})
 case 15:o=e.sent,this.element.querySelectorAll("img")[0].src=a.toDataURL("image/jpeg")
 case 18:return e.prev=18,i&&i.cleanup&&i.cleanup(),o&&o.cancel&&o.cancel(),e.finish(18)
 case 22:case"end":return e.stop()}},e,this,[[4,,18,22]])})).restartable()})
@@ -11804,7 +11805,7 @@ return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:i
 break}return e.abrupt("return")
 case 2:return e.next=4,(0,t.timeout)(100)
 case 4:return e.prev=4,e.next=7,n.getPage(r)
-case 7:return i=e.sent,s=i.getViewport(1),a=this.element.offsetWidth-this.spacing,l=this.element.offsetHeight-this.spacing,u=Math.min(a/s.width,l/s.height),c=i.getViewport(u),d=this.element.querySelectorAll("canvas")[0],h=d.getContext("2d"),d.width=c.width,d.height=c.height,e.next=19,i.render({canvasContext:h,viewport:c})
+case 7:return i=e.sent,s=i.getViewport({scale:1}),a=this.element.offsetWidth-this.spacing,l=this.element.offsetHeight-this.spacing,u=Math.min(a/s.width,l/s.height),c=i.getViewport({scale:u}),d=this.element.querySelectorAll("canvas")[0],h=d.getContext("2d"),d.width=c.width,d.height=c.height,e.next=19,i.render({canvasContext:h,viewport:c})
 case 19:o=e.sent
 case 20:return e.prev=20,i&&i.cleanup&&i.cleanup(),o&&o.cancel&&o.cancel(),e.finish(20)
 case 24:case"end":return e.stop()}},e,this,[[4,,20,24]])})).restartable()})
@@ -13162,8 +13163,8 @@ e.default=n}),define("@abcum/ember-app/services/pdfjs",["exports"],function(e){"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t=Ember.Service.extend({rooturl:Ember.inject.service(),loaded:!1,load:function(){var e=this
 return this.loaded?Ember.RSVP.resolve():new Ember.RSVP.Promise(function(t,n){var r=document.createElement("script")
-r.onload=t,r.onerror=n,r.src=e.rooturl.build("/assets/pdf-88e6ffb1308a89de8fd0fd6abc1c59fd.js"),document.head.appendChild(r),e.loaded=!0})},open:function(e){var t=this
-return this.load().then(function(){return pdfjsLib.GlobalWorkerOptions.workerSrc=t.rooturl.build("/assets/pdf-worker-fb1e1e0a80c00c4911e9c443163e0a92.js"),pdfjsLib.getDocument(e)})}})
+r.onload=t,r.onerror=n,r.src=e.rooturl.build("/assets/pdf-64dc5ca316e6f6b14fe2bac944117c10.js"),document.head.appendChild(r),e.loaded=!0})},open:function(e){var t=this
+return this.load().then(function(){return pdfjsLib.GlobalWorkerOptions.workerSrc=t.rooturl.build("/assets/pdf-worker-dd8267f5f15ebf46426ed67bfc18c787.js"),pdfjsLib.getDocument(e)})}})
 e.default=t}),define("@abcum/ember-app/services/rooturl",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t=Ember.Service.extend({build:function(e){return"".concat(this.env.rootURL,"/").concat(e).replace(/\/\/+/g,"/")}})
@@ -13201,7 +13202,7 @@ var t=Ember.HTMLBars.template({id:"4xhWFcH2",block:'{"symbols":[],"statements":[
 e.default=t})
 define("@abcum/ember-app/templates/components/app-document",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-var t=Ember.HTMLBars.template({id:"r5hJbCIn",block:'{"symbols":["step"],"statements":[[1,[29,"app-document/viewer",null,[["alt","doc","page","width","height","spacing"],[[25,["alt"]],[25,["doc"]],[25,["page"]],[25,["width"]],[25,["height"]],[25,["spacing"]]]]],false],[0,"\\n\\n"],[7,"app-document-thumbs"],[9],[0,"\\n"],[4,"each",[[29,"range",[1,[29,"add",[1,[25,["doc","numPages"]]],null]],null]],null,{"statements":[[0,"\\t\\t"],[1,[29,"app-document/thumb",null,[["alt","doc","step","page","width","height","select"],[[25,["alt"]],[25,["doc"]],[24,1,[]],[25,["page"]],[25,["width"]],[25,["height"]],[29,"queue",[[29,"action",[[24,0,[]],[29,"mut",[[25,["page"]]],null]],null],[29,"action",[[24,0,[]],"select"],null]],null]]]],false],[0,"\\n"]],"parameters":[1]},null],[10]],"hasEval":false}',meta:{moduleName:"@abcum/ember-app/templates/components/app-document.hbs"}})
+var t=Ember.HTMLBars.template({id:"5vBMSNmL",block:'{"symbols":["step"],"statements":[[1,[29,"app-document/viewer",null,[["alt","doc","page","width","height","spacing"],[[25,["alt"]],[25,["doc"]],[25,["page"]],[25,["width"]],[25,["height"]],[25,["spacing"]]]]],false],[0,"\\n\\n"],[7,"app-document-thumbs"],[9],[0,"\\n"],[4,"each",[[25,["pages"]]],null,{"statements":[[0,"\\t\\t"],[1,[29,"app-document/thumb",null,[["alt","doc","step","page","width","height","select"],[[25,["alt"]],[25,["doc"]],[24,1,[]],[25,["page"]],[25,["width"]],[25,["height"]],[29,"queue",[[29,"action",[[24,0,[]],[29,"mut",[[25,["page"]]],null]],null],[29,"action",[[24,0,[]],"select"],null]],null]]]],false],[0,"\\n"]],"parameters":[1]},null],[10]],"hasEval":false}',meta:{moduleName:"@abcum/ember-app/templates/components/app-document.hbs"}})
 e.default=t}),define("@abcum/ember-app/templates/components/app-document/thumb",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t=Ember.HTMLBars.template({id:"gyU8Q/VB",block:'{"symbols":[],"statements":[[7,"img"],[11,"alt",""],[9],[10],[0," "],[7,"num"],[9],[1,[23,"step"],false],[10],[0," "],[7,"canvas"],[9],[10]],"hasEval":false}',meta:{moduleName:"@abcum/ember-app/templates/components/app-document/thumb.hbs"}})
