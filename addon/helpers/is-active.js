@@ -6,7 +6,7 @@ export default Helper.extend({
 
 	router: inject(),
 
-	changed: observer('route.currentRouteName', function() {
+	changed: observer('router.currentRouteName', function() {
 		this.recompute();
 	}),
 
