@@ -57,17 +57,17 @@ Or define the horizontal alignment position.
 Scrolls to a particular set of cooridnates on the page.
 
 ```handlebars
-{{run (scroll-to top=520)}}
+{{scroll-to top=520}}
 ```
 
 And scroll horizontally aswell as vertically.
 
 ```handlebars
-{{run (scroll-to top=520 left=100)}}
+{{scroll-to top=520 left=100}}
 ```
 
 And specify whether the scrolling should be smooth.
 
 ```handlebars
-{{run (scroll-to top=520 left=100 smooth=true)}}
+{{scroll-to top=520 left=100 smooth=true}}
 ```

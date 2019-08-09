@@ -1,20 +1,20 @@
-import Helper from '@ember/component/helper';
+import Component from '@ember/component';
 import features from '../utils/features';
 
-export default Helper.extend({
+export default Component.extend({
 
-	compute(args, { top = 0, left = 0, smooth = false }) {
-		return function() {
+	didInsertElement() {
 
-			if (features.fastboot() === true) return;
+		this._super(...arguments);
 
-			window.scrollTo({
-				top: top,
-				left: left,
-				behavior: smooth ? 'smooth' : 'auto',
-			});
+		if (features.fastboot() === true) return;
 
-		};
-	}
+		window.scrollTo({
+			top: this.top,
+			left: this.left,
+			behavior: this.smooth ? 'smooth' : 'auto',
+		});
+
+	},
 
 });
