@@ -10,16 +10,15 @@ module.exports = {
   browser_args: {
     Chrome: {
       ci: [
-        // --no-sandbox is needed when running Chrome inside a container
-        process.env.CI ? '--no-sandbox' : null,
         '--headless',
-        '--disable-gpu',
-        '--disable-dev-shm-usage',
-        '--disable-software-rasterizer',
+        '--no-sandbox',
         '--mute-audio',
-        '--remote-debugging-port=0',
-        '--window-size=1440,900'
-      ].filter(Boolean)
+        '--disable-gpu',
+        '--window-size=1440,900',
+        '--disable-dev-shm-usage',
+        '--remote-debugging-port=9222',
+        '--remote-debugging-address=0.0.0.0'
+      ]
     }
   }
 };
