@@ -1,5 +1,4 @@
 import { helper } from '@ember/component/helper';
-import { htmlSafe } from '@ember/string';
 import marked from 'marked';
 
 const renderer = function() {
@@ -18,11 +17,12 @@ const renderer = function() {
 };
 
 export function plaintext([value='']) {
-	return htmlSafe(
-		marked(String(value), {
-			renderer: renderer(),
-		})
-	);
+
+	return marked(String(value), {
+		renderer: renderer(),
+	}).replace(/&#(\d+);/g, (match, dec) => {
+		return String.fromCharCode(dec);
+	});
 }
 
 export default helper(plaintext);
