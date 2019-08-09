@@ -124,6 +124,9 @@ module.exports = {
 			throw new Error("Only one of the `worker` or `version` options can be enabled at the same time.");
 		}
 
+		// Import fetch polyfill
+		this.app.import('node_modules/whatwg-fetch/dist/fetch.umd.js');
+
 		// Check if we are in Electron
 		this.app.import('vendor/electron/inject.js', {
 			outputFile: 'assets/electron.js'
