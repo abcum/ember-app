@@ -3,7 +3,7 @@ import features from '../utils/features';
 
 export default Component.extend({
 
-	didInsertElement() {
+	didUpdate() {
 
 		this._super(...arguments);
 
