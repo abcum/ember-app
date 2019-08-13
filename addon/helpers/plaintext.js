@@ -18,10 +18,16 @@ const renderer = function() {
 
 export function plaintext([value='']) {
 
-	return marked(String(value), {
+	return marked.inlineLexer(String(value), {
 		renderer: renderer(),
-	}).replace(/&#(\d+);/g, (match, dec) => {
+	}).replace(/&#(\d+);/g, (m, dec) => {
 		return String.fromCharCode(dec);
+	}).replace(/&nbsp;/g, (m) => {
+		return ' ';
+	}).replace(/<[^>]*>/g, (m) => {
+		return '';
+	}).replace(/&[^;]*;/g, (m) => {
+		return '';
 	});
 }
 
