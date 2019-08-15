@@ -1,7 +1,10 @@
 import Component from '@ember/component';
 import { inject } from '@ember/service';
-import { task, timeout } from 'ember-concurrency';
 import layout from '../../templates/components/app-document/thumb';
+
+function timeout(ms) {
+	return new Promise( func => setTimeout(func, ms) );
+}
 
 export default Component.extend({
 
@@ -15,7 +18,7 @@ export default Component.extend({
 
 		this._super(...arguments);
 
-		this.get('process').perform(this.doc, this.step);
+		this.process(this.doc, this.step);
 
 	},
 
@@ -25,17 +28,17 @@ export default Component.extend({
 		}
 	},
 
-	process: task(function * (doc, num) {
+	async process(doc, num) {
 
 		if (this.doc === undefined) return;
 
-		yield timeout(100);
+		await timeout(100);
 
 		let page, ren;
 
 		try {
 
-			page = yield doc.getPage(num);
+			page = await doc.getPage(num);
 
 			let viewport = page.getViewport({ scale: 1 });
 			let canvas = this.element.querySelectorAll('canvas')[0];
@@ -44,7 +47,7 @@ export default Component.extend({
 			canvas.width = viewport.width;
 			canvas.height = viewport.height;
 
-			ren = yield page.render({
+			ren = await page.render({
 				canvasContext: context,
 				viewport: viewport,
 			});
@@ -59,6 +62,6 @@ export default Component.extend({
 
 		}
 
-	}).restartable(),
+	},
 
 });

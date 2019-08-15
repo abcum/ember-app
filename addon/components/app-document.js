@@ -2,8 +2,11 @@ import Component from '@ember/component';
 import ResizeMixin from "../mixins/resize";
 import { inject } from '@ember/service';
 import { computed } from '@ember/object';
-import { task, timeout } from 'ember-concurrency';
 import layout from '../templates/components/app-document';
+
+function timeout(ms) {
+	return new Promise( func => setTimeout(func, ms) );
+}
 
 export default Component.extend(ResizeMixin, {
 
@@ -37,7 +40,7 @@ export default Component.extend(ResizeMixin, {
 
 		this._super(...arguments);
 
-		this.get('renderDoc').perform(this.url);
+		this.process(this.url);
 
 	},
 
@@ -73,17 +76,17 @@ export default Component.extend(ResizeMixin, {
 
 	}),
 
-	renderDoc: task(function * (url) {
+	async process(url) {
 
 		try {
 
 			this.cleanup();
 
-			yield timeout(100);
+			await timeout(100);
 
 			this.xhr = this.get('pdfjs').open(url);
 
-			this.doc = yield this.xhr;
+			this.doc = await this.xhr;
 
 			this.notifyPropertyChange('doc');
 
@@ -95,7 +98,7 @@ export default Component.extend(ResizeMixin, {
 
 		}
 
-	}).restartable(),
+	},
 
 	actions: {
 
