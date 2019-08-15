@@ -1,6 +1,6 @@
 {
   "name": "@abcum/ember-app",
-  "version": "0.7.16",
+  "version": "0.7.17",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
