@@ -32,7 +32,7 @@ export default Component.extend({
 
 		if (doc === undefined) return;
 
-		await timeout(500);
+		await timeout(100);
 
 		try {
 
