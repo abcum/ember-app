@@ -22,11 +22,11 @@ export function plaintext([value='']) {
 		renderer: renderer(),
 	}).replace(/&#(\d+);/g, (m, dec) => {
 		return String.fromCharCode(dec);
-	}).replace(/&nbsp;/g, (m) => {
+	}).replace(/&nbsp;/g, () => {
 		return ' ';
-	}).replace(/<[^>]*>/g, (m) => {
+	}).replace(/<[^>]*>/g, () => {
 		return '';
-	}).replace(/&[^;]*;/g, (m) => {
+	}).replace(/&[^;]*;/g, () => {
 		return '';
 	});
 }
