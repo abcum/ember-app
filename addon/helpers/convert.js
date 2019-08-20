@@ -7,11 +7,11 @@ export function convert(params, hash) {
 	let f = hash.from || 'USD';
 	let a = parseFloat(params[0]);
 
-	if (f === window.fxbase || 'USD') {
+	if (f === window.fxbase || t === 'USD') {
 		return a * currency(t);
 	}
 
-	if (t === window.fxbase || 'USD') {
+	if (t === window.fxbase || t === 'USD') {
 		return a * ( 1 / currency(f) );
 	}
 
