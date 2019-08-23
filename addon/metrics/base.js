@@ -1,9 +1,13 @@
 import EmberObject from '@ember/object';
-import { assert } from '@ember/debug';
+import { assert, debug } from '@ember/debug';
 
 export default EmberObject.extend({
 
 	name: 'base',
+
+	init() {
+		debug(`Initializing ${this.toString()}`);
+	},
 
 	load() {
 		assert(`${this.toString()} must implement the load hook!`);

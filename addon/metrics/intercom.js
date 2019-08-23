@@ -1,5 +1,4 @@
 import Metric from './base';
-import features from '../utils/features';
 import { assert } from '@ember/debug';
 
 const src = 'script[src*="intercom"]';
@@ -12,9 +11,7 @@ export default Metric.extend({
 
 		if (window.Intercom) return;
 
-		if (features.createElement() === false) return;
-
-		assert(`You must pass a valid 'id' to the ${this.toString()} adapter`, this.config.id);
+		if (!this.config.id) return;
 
 		/* eslint-disable */
 		(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;
@@ -29,8 +26,6 @@ export default Metric.extend({
 
 	willDestroy() {
 
-		if (features.createElement() === false) return;
-
 		document.querySelectorAll(src).forEach(e => {
 			e.parentElement.removeChild(e);
 		});
@@ -43,7 +38,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.Intercom) return;
 
 		window.Intercom('shutdown');
 
@@ -55,7 +50,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.Intercom) return;
 
 		let event = Object.assign({}, data, {
 			user_id: id,
@@ -69,7 +64,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.Intercom) return;
 
 		window.Intercom('trackEvent', 'page viewed', data);
 
@@ -79,9 +74,9 @@ export default Metric.extend({
 
 		this.load();
 
-		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
+		if (!window.Intercom) return;
 
-		if (features.createElement() === false) return;
+		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 
 		window.Intercom('trackEvent', name, data);
 

@@ -1,5 +1,4 @@
 import Metric from './base';
-import features from '../utils/features';
 import { assert } from '@ember/debug';
 
 const src = 'script[src*="fbevents.js"]';
@@ -12,9 +11,7 @@ export default Metric.extend({
 
 		if (window.fbq) return;
 
-		if (features.createElement() === false) return;
-
-		assert(`You must pass a valid 'id' to the ${this.toString()} adapter`, this.config.id);
+		if (!this.config.id) return;
 
 		/* eslint-disable */
 		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -30,8 +27,6 @@ export default Metric.extend({
 
 	willDestroy() {
 
-		if (features.createElement() === false) return;
-
 		document.querySelectorAll(src).forEach(e => {
 			e.parentElement.removeChild(e);
 		});
@@ -45,7 +40,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.fbq) return;
 
 		window.fbq('init', this.config.id, { uid: null });
 
@@ -55,9 +50,9 @@ export default Metric.extend({
 
 		this.load();
 
-		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
+		if (!window.fbq) return;
 
-		if (features.createElement() === false) return;
+		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
 		window.fbq('init', this.config.id, { uid: id });
 
@@ -69,7 +64,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.fbq) return;
 
 		window.fbq('track', 'PageView', data);
 
@@ -79,9 +74,9 @@ export default Metric.extend({
 
 		this.load();
 
-		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
+		if (!window.fbq) return;
 
-		if (features.createElement() === false) return;
+		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 
 		window.fbq('track', name, data);
 

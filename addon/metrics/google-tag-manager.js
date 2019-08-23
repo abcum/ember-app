@@ -1,5 +1,4 @@
 import Metric from './base';
-import features from '../utils/features';
 import { assert } from '@ember/debug';
 
 const src = 'script[src*="googletagmanager"]';
@@ -12,9 +11,7 @@ export default Metric.extend({
 
 		if (window.gt) return;
 
-		if (features.createElement() === false) return;
-
-		assert(`You must pass a valid 'id' to the ${this.toString()} adapter`, this.config.id);
+		if (!this.config.id) return;
 
 		/* eslint-disable */
 		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -30,8 +27,6 @@ export default Metric.extend({
 
 	willDestroy() {
 
-		if (features.createElement() === false) return;
-
 		document.querySelectorAll(src).forEach(e => {
 			e.parentElement.removeChild(e);
 		});
@@ -46,11 +41,9 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.gt) return;
 
-		window.dataLayer.push({
-			'event': 'clear',
-		});
+		window.gt({ 'event': 'clear' });
 
 	},
 
@@ -58,14 +51,11 @@ export default Metric.extend({
 
 		this.load();
 
+		if (!window.gt) return;
+
 		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
-		if (features.createElement() === false) return;
-
-		window.dataLayer.push({
-			'event': 'identify',
-			'userId': id,
-		});
+		window.gt({ 'event': 'identify', 'userId': id });
 
 	},
 
@@ -73,15 +63,15 @@ export default Metric.extend({
 
 		this.load();
 
-		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
+		if (!window.gt) return;
 
-		if (features.createElement() === false) return;
+		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 
 		let event = Object.assign({}, data, {
 			event: name,
 		});
 
-		window.dataLayer.push(event);
+		window.gt(event);
 
 	},
 

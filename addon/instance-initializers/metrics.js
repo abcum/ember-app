@@ -1,6 +1,11 @@
+import features from '../utils/features';
+
 export default function(instance) {
 
 	let m = [];
+
+	// Check if browser
+	let x = features.createElement();
 
 	// Get the app config
 	let c = instance.lookup('config:ember-app');
@@ -21,7 +26,7 @@ export default function(instance) {
 		// Should the metric run in this environment?
 		let a = metric.environments.includes(e.environment);
 
-		if (f && a) {
+		if (x && f && a) {
 
 			let o = f.create(instance.ownerInjection(), {
 				name: metric.name, config: metric.config

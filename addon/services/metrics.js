@@ -11,11 +11,7 @@ export default Service.extend({
 
 		this.router.on('routeDidChange', () => {
 			this.get('metrics').forEach(m => {
-				try {
-					m.trackPage();
-				} catch (e) {
-					console.warn(e); // eslint-disable-line no-console
-				}
+				m.trackPage();
 			});
 		});
 

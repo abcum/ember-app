@@ -1,5 +1,4 @@
 import Metric from './base';
-import features from '../utils/features';
 import { assert } from '@ember/debug';
 
 const src = 'script[src*="raygun"]';
@@ -10,9 +9,7 @@ export default Metric.extend({
 
 		if (window.rg4js) return;
 
-		if (features.createElement() === false) return;
-
-		assert(`You must pass a valid 'id' to the ${this.toString()} adapter`, this.config.id);
+		if (!this.config.id) return;
 
 		/* eslint-disable */
 		!function(a,b,c,d,e,f,g,h){a.RaygunObject=e,a[e]=a[e]||function(){
@@ -30,8 +27,6 @@ export default Metric.extend({
 
 	willDestroy() {
 
-		if (features.createElement() === false) return;
-
 		document.querySelectorAll(src).forEach(e => {
 			e.parentElement.removeChild(e);
 		});
@@ -44,7 +39,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.rg4js) return;
 
 		window.rg4js('setUser', {
 			isAnonymous: true,
@@ -56,9 +51,9 @@ export default Metric.extend({
 
 		this.load();
 
-		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
+		if (!window.rg4js) return;
 
-		if (features.createElement() === false) return;
+		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
 		let event = Object.assign({}, data, {
 			identifier: id,
@@ -72,7 +67,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.rg4js) return;
 
 		window.rg4js('trackEvent', {
 			type: 'pageView',

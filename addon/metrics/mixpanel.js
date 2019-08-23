@@ -1,5 +1,4 @@
 import Metric from './base';
-import features from '../utils/features';
 import { assert } from '@ember/debug';
 
 const src = 'script[src*="mixpanel"]';
@@ -12,9 +11,7 @@ export default Metric.extend({
 
 		if (window.mixpanel) return;
 
-		if (features.createElement() === false) return;
-
-		assert(`You must pass a valid 'id' to the ${this.toString()} adapter`, this.config.id);
+		if (!this.config.id) return;
 
 		/* eslint-disable */
 		(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
@@ -26,8 +23,6 @@ export default Metric.extend({
 	},
 
 	willDestroy() {
-
-		if (features.createElement() === false) return;
 
 		document.querySelectorAll(src).forEach(e => {
 			e.parentElement.removeChild(e);
@@ -41,7 +36,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.mixpanel) return;
 
 		window.mixpanel.reset();
 
@@ -51,9 +46,9 @@ export default Metric.extend({
 
 		this.load();
 
-		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
+		if (!window.mixpanel) return;
 
-		if (features.createElement() === false) return;
+		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
 		window.mixpanel.identify(id);
 
@@ -65,7 +60,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.mixpanel) return;
 
 		window.mixpanel('trackEvent', 'page viewed', data);
 
@@ -75,9 +70,9 @@ export default Metric.extend({
 
 		this.load();
 
-		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
+		if (!window.mixpanel) return;
 
-		if (features.createElement() === false) return;
+		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 
 		window.mixpanel('trackEvent', name, data);
 

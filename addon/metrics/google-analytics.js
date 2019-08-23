@@ -1,5 +1,4 @@
 import Metric from './base';
-import features from '../utils/features';
 import { assert } from '@ember/debug';
 import { inject } from '@ember/service';
 
@@ -15,9 +14,7 @@ export default Metric.extend({
 
 		if (window.ga) return;
 
-		if (features.createElement() === false) return;
-
-		assert(`You must pass a valid 'id' to the ${this.toString()} adapter`, this.config.id);
+		if (!this.config.id) return;
 
 		/* eslint-disable */
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -53,8 +50,6 @@ export default Metric.extend({
 
 	willDestroy() {
 
-		if (features.createElement() === false) return;
-
 		document.querySelectorAll(src).forEach(e => {
 			e.parentElement.removeChild(e);
 		});
@@ -67,7 +62,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.ga) return;
 
 		window.ga('set', 'userId', null);
 
@@ -77,9 +72,9 @@ export default Metric.extend({
 
 		this.load();
 
-		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
+		if (!window.ga) return;
 
-		if (features.createElement() === false) return;
+		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
 		window.ga('set', 'userId', id);
 
@@ -89,7 +84,7 @@ export default Metric.extend({
 
 		this.load();
 
-		if (features.createElement() === false) return;
+		if (!window.ga) return;
 
 		let event = Object.assign({}, data, {
 			hitType: 'pageview',
@@ -105,9 +100,9 @@ export default Metric.extend({
 
 		this.load();
 
-		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
+		if (!window.ga) return;
 
-		if (features.createElement() === false) return;
+		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 
 		let defaults = { eventCategory: 'Undefined' };
 
