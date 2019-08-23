@@ -99,6 +99,20 @@ module.exports = function(environment) {
 						id: 'def1abc2'
 					}
 				},
+				{
+					name: 'raygun',
+					environments: ['production'],
+					config: {
+						id: '1234567890'
+					}
+				},
+				{
+					name: 'heap',
+					environments: ['production'],
+					config: {
+						id: '1234567890'
+					}
+				},
 			],
 			plugins: {
 				chart: true, // Enable chart.js library
