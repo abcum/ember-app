@@ -25,9 +25,9 @@ module.exports = class Webapp extends Plugin {
 
 		let rootURL = this.conf.rootURL;
 
-		// Resize the base icon image into
-		// a smaller favicon image for use
-		// in desktop browser tabs.
+		// Get the original icon file and
+		// the original tile file, so we
+		// can process and resize them.
 
 		let icon = this.find(['**/static/webapp/icon.png'])[0];
 		let tile = this.find(['**/static/webapp/tile.png'])[0];

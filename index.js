@@ -110,7 +110,7 @@ module.exports = {
 		// Specify the default images options
 		this.opt.images = Object.assign({}, defaults.images, this.opt.images);
 
-		// Specify the default images options
+		// Specify the default webapp options
 		this.opt.webapp = Object.assign({}, defaults.webapp, this.opt.webapp);
 
 		// Specify the default worker options
