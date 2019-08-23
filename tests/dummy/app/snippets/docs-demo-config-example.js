@@ -72,6 +72,13 @@ module.exports = function(environment) {
 					}
 				},
 				{
+					name: 'google-tag-manager',
+					environments: ['production'],
+					config: {
+						id: 'GTM-1234'
+					}
+				},
+				{
 					name: 'facebook-pixel',
 					environments: ['production'],
 					config: {
