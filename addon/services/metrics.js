@@ -11,7 +11,11 @@ export default Service.extend({
 
 		this.router.on('routeDidChange', () => {
 			this.get('metrics').forEach(m => {
-				m.trackPage();
+				try {
+					m.trackPage();
+				} catch (e) {
+					console.warn(e);
+				}
 			});
 		});
 
