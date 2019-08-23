@@ -14,7 +14,7 @@ export default Service.extend({
 				try {
 					m.trackPage();
 				} catch (e) {
-					console.warn(e);
+					console.warn(e); // eslint-disable-line no-console
 				}
 			});
 		});
