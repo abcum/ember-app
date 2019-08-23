@@ -8,7 +8,9 @@ export default Metric.extend({
 
 	name: 'mixpanel',
 
-	init() {
+	load() {
+
+		if (window.mixpanel) return;
 
 		if (features.createElement() === false) return;
 
@@ -37,6 +39,8 @@ export default Metric.extend({
 
 	clear() {
 
+		this.load();
+
 		if (features.createElement() === false) return;
 
 		window.mixpanel.reset();
@@ -44,6 +48,8 @@ export default Metric.extend({
 	},
 
 	identify(id, data) {
+
+		this.load();
 
 		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
@@ -57,6 +63,8 @@ export default Metric.extend({
 
 	trackPage(data) {
 
+		this.load();
+
 		if (features.createElement() === false) return;
 
 		window.mixpanel('trackEvent', 'page viewed', data);
@@ -64,6 +72,8 @@ export default Metric.extend({
 	},
 
 	trackEvent(name, data) {
+
+		this.load();
 
 		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 

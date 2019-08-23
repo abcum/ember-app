@@ -8,7 +8,9 @@ export default Metric.extend({
 
 	name: 'facebook-pixel',
 
-	init() {
+	load() {
+
+		if (window.fbq) return;
 
 		if (features.createElement() === false) return;
 
@@ -23,8 +25,6 @@ export default Metric.extend({
 		/* eslint-enable */
 
 		window.fbq('init', this.config.id);
-
-		this.trackPage();
 
 	},
 
@@ -43,6 +43,8 @@ export default Metric.extend({
 
 	clear() {
 
+		this.load();
+
 		if (features.createElement() === false) return;
 
 		window.fbq('init', this.config.id, { uid: null });
@@ -50,6 +52,8 @@ export default Metric.extend({
 	},
 
 	identify(id, data) {
+
+		this.load();
 
 		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
@@ -63,6 +67,8 @@ export default Metric.extend({
 
 	trackPage(data) {
 
+		this.load();
+
 		if (features.createElement() === false) return;
 
 		window.fbq('track', 'PageView', data);
@@ -70,6 +76,8 @@ export default Metric.extend({
 	},
 
 	trackEvent(name, data) {
+
+		this.load();
 
 		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 

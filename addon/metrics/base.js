@@ -5,8 +5,8 @@ export default EmberObject.extend({
 
 	name: 'base',
 
-	init() {
-		assert(`${this.toString()} must implement the init hook!`);
+	load() {
+		assert(`${this.toString()} must implement the load hook!`);
 	},
 
 	willDestroy() {

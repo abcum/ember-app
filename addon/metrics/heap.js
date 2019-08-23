@@ -6,7 +6,9 @@ const src = 'script[src*="heapanalytics"]';
 
 export default Metric.extend({
 
-	init() {
+	load() {
+
+		if (window.heap) return;
 
 		if (features.createElement() === false) return;
 
@@ -33,6 +35,8 @@ export default Metric.extend({
 
 	clear() {
 
+		this.load();
+
 		if (features.createElement() === false) return;
 
 		window.heap.resetIdentity();
@@ -40,6 +44,8 @@ export default Metric.extend({
 	},
 
 	identify(id, data) {
+
+		this.load();
 
 		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
@@ -52,6 +58,8 @@ export default Metric.extend({
 	},
 
 	trackEvent(name, data) {
+
+		this.load();
 
 		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 

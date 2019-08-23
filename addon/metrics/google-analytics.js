@@ -11,7 +11,9 @@ export default Metric.extend({
 
 	rooturl: inject(),
 
-	init() {
+	load() {
+
+		if (window.ga) return;
 
 		if (features.createElement() === false) return;
 
@@ -47,8 +49,6 @@ export default Metric.extend({
 			});
 		}
 
-		this.trackPage();
-
 	},
 
 	willDestroy() {
@@ -65,6 +65,8 @@ export default Metric.extend({
 
 	clear() {
 
+		this.load();
+
 		if (features.createElement() === false) return;
 
 		window.ga('set', 'userId', null);
@@ -72,6 +74,8 @@ export default Metric.extend({
 	},
 
 	identify(id) {
+
+		this.load();
 
 		assert(`You must pass an 'id' as the first argument to ${this.toString()}:identify()`, id);
 
@@ -82,6 +86,8 @@ export default Metric.extend({
 	},
 
 	trackPage(data) {
+
+		this.load();
 
 		if (features.createElement() === false) return;
 
@@ -96,6 +102,8 @@ export default Metric.extend({
 	},
 
 	trackEvent(name, data) {
+
+		this.load();
 
 		assert(`You must pass a 'name' as the first argument to ${this.toString()}:trackEvent()`, name);
 
