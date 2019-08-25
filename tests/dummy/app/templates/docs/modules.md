@@ -29,11 +29,3 @@ See [Moment.js](https://momentjs.com/docs/) documentation for more information.
 > This functionality requires the {{#link-to "docs.config"}}`moment`{{/link-to}} plugin to be enabled.
 
 {{docs-snippet name='docs-demo-modules-moment.js'}}
-
-## Vis
-
-See [Vis.js](http://visjs.org) documentation for more information.
-
-> This functionality requires the {{#link-to "docs.config"}}`vis`{{/link-to}} plugin to be enabled.
-
-{{docs-snippet name='docs-demo-modules-vis.js'}}

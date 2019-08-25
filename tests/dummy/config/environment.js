@@ -48,7 +48,6 @@ module.exports = function(environment) {
 				chart: true,
 				marked: true,
 				pdf: true,
-				vis: true,
 				moment: {
 					locales: ['en-gb'],
 				},

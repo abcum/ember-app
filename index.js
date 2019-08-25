@@ -168,15 +168,6 @@ module.exports = {
 			});
 		}
 
-		// Include `vis.js` library
-		if (this.opt.plugins && this.opt.plugins.vis) {
-			this.app.import('node_modules/vis/dist/vis.js', fastboot);
-			this.app.import('node_modules/vis/dist/vis.css');
-			this.app.import('vendor/vis.js', {
-				exports: { vis: ['default'] }
-			});
-		}
-
 		// Include `moment.js` library
 		if (this.opt.plugins && this.opt.plugins.moment) {
 
