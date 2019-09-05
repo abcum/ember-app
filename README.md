@@ -11,7 +11,7 @@ An addon which makes building complex applications using Ember.js easier.
 
 ### Features
 
-The `ember-app` addon adds a multitute of functionality to an Ember.js app:
+The `ember-app` addon adds a multitude of functionality to an Ember.js app:
 
 ##### Advanced styling and SCSS mixins
 A variety of scss mixins enable easy styling of advanced user interfaces.
