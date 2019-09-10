@@ -49,8 +49,7 @@ To enable a multi-select dropdown menu, set the `multiple` attribute to `true`, 
 {{#docs-demo as |demo|}}
 	{{#demo.example name='docs-demo-dropdown-multiple.hbs'}}
 		User permissions:
-		{{#app-dropdown value=perms multiple=true default='Specify permissions' select=(action (mut perms)) as |dropdown|}}
-			{{dropdown.option label="No permissions"}}
+		{{#app-dropdown value=perms multiple=true default='No permissions' select=(action (mut perms)) as |dropdown|}}
 			{{#dropdown.group label="Reading"}}
 				{{dropdown.option value="view" label="Can view posts"}}
 				{{dropdown.option value="comment" label="Can comment on posts"}}
