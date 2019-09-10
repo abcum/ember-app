@@ -193,21 +193,22 @@ export default Component.extend(ResizeMixin, {
 	select(item, options) {
 
 		if (options.toggle) {
-			if (this.selection.includes(item.index)) {
-				this.selection.removeObject(item.index);
+			if (this.selection.includes(item.model)) {
+				this.selection.removeObject(item.model);
 			} else {
-				this.selection.addObject(item.index);
+				this.selection.addObject(item.model);
 			}
 		}
 
 		if (options.range) {
 			let idx = range(item.index, this.cursor);
+			idx = idx.map(i => A(this.content).objectAt(i, true) );
 			this.selection.addObjects(idx);
 		}
 
 		if (options.single) {
 			this.selection.clear();
-			this.selection.addObject(item.index);
+			this.selection.addObject(item.model);
 		}
 
 		if (options.reset) {

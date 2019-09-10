@@ -37,7 +37,11 @@ export default Component.extend(StylesMixin, {
 
 	didReceiveAttrs() {
 
-		this.set('selected', [].concat(this.selection).includes(this.index));
+		let id = this.get('model.id');
+
+		let se = [].concat(this.selection).find(i => i.id == id);
+
+		this.set('selected', se);
 
 		if (this.kind === 'list') {
 
