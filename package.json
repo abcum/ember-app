@@ -1,6 +1,6 @@
 {
   "name": "@abcum/ember-app",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "An addon which makes building complex applications using Ember.js easier.",
   "keywords": [
     "ember-addon"
