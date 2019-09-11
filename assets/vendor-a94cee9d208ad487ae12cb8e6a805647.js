@@ -9216,7 +9216,7 @@ if(Ember.isArray(o))return this.set("array",o),Ember.A(o).slice(n,i)}})
 e.default=r}),define("@abcum/ember-app/helpers/slug",["exports"],function(e){"use strict"
 function t(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=[],n=!0,i=!1,o=void 0
 try{for(var a,s=e[Symbol.iterator]();!(n=(a=s.next()).done)&&(r.push(a.value),!t||r.length!==t);n=!0);}catch(u){i=!0,o=u}finally{try{n||null==s.return||s.return()}finally{if(i)throw o}}return r}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}()}function r(e){var r=t(e,1)[0]
-return String(void 0===r?"":r).replace(/['"]/gi,"").replace(/[\s.]/gi,"-").replace(/(?![a-zA-Z0-9])/gi,"").toLowerCase()}Object.defineProperty(e,"__esModule",{value:!0}),e.slug=r,e.default=void 0
+return String(void 0===r?"":r).replace(/[\s.]/gi,"-").replace(/[^a-zA-Z0-9_-]+/g,"").replace(/--/,"-").toLowerCase()}Object.defineProperty(e,"__esModule",{value:!0}),e.slug=r,e.default=void 0
 var n=Ember.Helper.helper(r)
 e.default=n}),define("@abcum/ember-app/helpers/sort-by",["exports"],function(e){"use strict"
 function t(e){return function(e){if(Array.isArray(e))return e}(e)||function(e){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e))return Array.from(e)}(e)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}()}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
