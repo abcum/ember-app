@@ -33,7 +33,6 @@ export default Service.extend({
 		case 3:
 			return this.get(`metric:${n}`).identify(id, data);
 		case 2:
-			[].shift.apply(arguments);
 			return this.get(`metrics`).forEach(m => {
 				m.identify(...arguments);
 			});
@@ -45,7 +44,6 @@ export default Service.extend({
 		case 2:
 			return this.get(`metric:${n}`).trackPage(data);
 		case 1:
-			[].shift.apply(arguments);
 			return this.get(`metrics`).forEach(m => {
 				m.trackPage(...arguments);
 			});
@@ -57,7 +55,6 @@ export default Service.extend({
 		case 3:
 			return this.get(`metric:${n}`).trackEvent(name, data);
 		case 2:
-			[].shift.apply(arguments);
 			return this.get(`metrics`).forEach(m => {
 				m.trackEvent(...arguments);
 			});
