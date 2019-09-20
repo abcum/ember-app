@@ -49,6 +49,7 @@ const defaults = {
 		color: '#000000',
 		description: '',
 		display: 'standalone',
+		enabled: true,
 		name: '',
 		orientation: 'portrait',
 		scope: '/',
@@ -295,7 +296,9 @@ module.exports = {
 	contentFor(type) {
 
 		if (type === 'head') {
-			return Header(this.cfg, this.opt.webapp);
+			if (this.opt.webapp.enabled) {
+				return Header(this.cfg, this.opt.webapp);
+			}
 		}
 
 		if (process.env.EMBER_CLI_ELECTRON) {
