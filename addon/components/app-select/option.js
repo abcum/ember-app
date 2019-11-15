@@ -1,8 +1,11 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { A } from '@ember/array';
+import layout from '../../templates/components/app-select/option';
 
 export default Component.extend({
+
+	layout,
 
 	tabindex: 0,
 
